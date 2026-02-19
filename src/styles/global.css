@@ -11,8 +11,8 @@
   --color-bg-elevated: #1A1A2E;
 
   /* Primary Accent (Pixfork Red — from logo) */
-  --color-accent-primary: #E5342D;
-  --color-accent-primary-muted: #B52A24;
+  --color-accent-primary: #E21D00;
+  --color-accent-primary-muted: #B31700;
 
   /* Secondary Accent (Warm White) */
   --color-accent-secondary: #F0F0F0;
@@ -330,8 +330,8 @@ html.light {
   --color-bg-surface: #EAEAEF;
   --color-bg-elevated: #FFFFFF;
 
-  --color-accent-primary: #D42D26;
-  --color-accent-primary-muted: #A82520;
+  --color-accent-primary: #CC1A00;
+  --color-accent-primary-muted: #991300;
 
   --color-accent-secondary: #1A1A2E;
   --color-accent-secondary-muted: #3A3A4E;

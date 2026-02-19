@@ -48,7 +48,7 @@ export default function GlitchText({
           <span
             className="absolute top-0 left-0 w-full h-full pointer-events-none"
             style={{
-              color: '#E5342D',
+              color: '#E21D00',
               animation: 'glitch-1 0.3s infinite linear',
               clipPath: 'inset(10% 0 80% 0)',
               mixBlendMode: 'screen',

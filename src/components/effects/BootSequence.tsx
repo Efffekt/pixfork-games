@@ -96,7 +96,7 @@ export default function BootSequence() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(229,52,45,0.015) 1px, rgba(229,52,45,0.015) 2px)',
+          background: 'repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(226,29,0,0.015) 1px, rgba(226,29,0,0.015) 2px)',
         }}
       />
 
@@ -104,11 +104,11 @@ export default function BootSequence() {
         {/* Mini logo */}
         <div className="mb-6 flex items-center gap-3">
           <div className="flex gap-0.5">
-            <div className="w-1.5 h-1.5 bg-[#E5342D]" />
-            <div className="w-1.5 h-1.5 bg-[#E5342D]" />
-            <div className="w-1.5 h-1.5 bg-[#E5342D]" />
+            <div className="w-1.5 h-1.5 bg-[#E21D00]" />
+            <div className="w-1.5 h-1.5 bg-[#E21D00]" />
+            <div className="w-1.5 h-1.5 bg-[#E21D00]" />
           </div>
-          <span className="font-mono text-[10px] text-[#E5342D]/40 uppercase tracking-widest">
+          <span className="font-mono text-[10px] text-[#E21D00]/40 uppercase tracking-widest">
             Pixfork Games OS
           </span>
         </div>
@@ -122,7 +122,7 @@ export default function BootSequence() {
                   ? 'text-[#00FF88]'
                   : i === lines.length - 1 && line.includes('ONLINE')
                   ? 'text-[#00FF88]'
-                  : 'text-[#E5342D]'
+                  : 'text-[#E21D00]'
               }`}
             >
               {line}
@@ -136,7 +136,7 @@ export default function BootSequence() {
         {/* Progress bar */}
         <div className="mt-6 h-0.5 bg-bg-elevated rounded-sm overflow-hidden">
           <div
-            className="h-full bg-[#E5342D] transition-all duration-200"
+            className="h-full bg-[#E21D00] transition-all duration-200"
             style={{ width: `${(currentLine / BOOT_LINES.length) * 100}%` }}
           />
         </div>
