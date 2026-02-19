@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import { team } from '../data/team';
+import { contactEmail, companyAddress } from '../data/socials';
+---
+
+<BaseLayout
+  title="About — Pixfork Games"
+  description="Meet the team behind Pixfork Games. A small, creative Norwegian indie game studio with great ambitions."
+>
+  <Navbar />
+
+  <main class="pt-32">
+    <!-- Hero -->
+    <section class="py-16 md:py-24">
+      <div class="max-w-4xl mx-auto px-6 md:px-12 text-center">
+        <h1 class="font-heading text-xl md:text-2xl text-text-primary uppercase tracking-wider neon-text-subtle mb-8">
+          About Pixfork Games
+        </h1>
+        <p class="text-text-secondary text-xl leading-relaxed mb-6">
+          We're a small, creative team with great ambitions. Founded in 2022 in
+          Nesoddtangen, Norway, we set out to produce really good games for a
+          demanding audience.
+        </p>
+        <p class="text-text-secondary text-lg leading-relaxed">
+          With great passion, we aim at producing engaging stories and
+          experiences that stick with you long after you put the controller down
+          — or close the app.
+        </p>
+      </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="py-16 md:py-24 bg-bg-surface/30">
+      <div class="max-w-5xl mx-auto px-6 md:px-12">
+        <SectionHeading title="Our Journey" />
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-bg-surface border border-white/5 rounded-sm p-8">
+            <span class="font-heading text-xs text-accent-primary mb-4 block">2022</span>
+            <h3 class="font-heading text-[10px] text-text-primary uppercase tracking-wider mb-3">
+              The Beginning
+            </h3>
+            <p class="text-text-secondary text-sm leading-relaxed">
+              Pixfork Games was founded in Nesoddtangen, Norway. Four friends
+              with a shared passion for games came together to build something
+              meaningful.
+            </p>
+          </div>
+
+          <div class="bg-bg-surface border border-white/5 rounded-sm p-8">
+            <span class="font-heading text-xs text-game-ascending mb-4 block">2023–2024</span>
+            <h3 class="font-heading text-[10px] text-text-primary uppercase tracking-wider mb-3">
+              Mobile Launch
+            </h3>
+            <p class="text-text-secondary text-sm leading-relaxed">
+              We released our first games — Ascending and Neon Zone — on mobile
+              platforms, learning the craft and building our audience.
+            </p>
+          </div>
+
+          <div class="bg-bg-surface border border-white/5 rounded-sm p-8">
+            <span class="font-heading text-xs text-game-ontape mb-4 block">2025–2027</span>
+            <h3 class="font-heading text-[10px] text-text-primary uppercase tracking-wider mb-3">
+              The Big Leap
+            </h3>
+            <p class="text-text-secondary text-sm leading-relaxed">
+              Now we're working on our most ambitious project yet — On Tape
+              &lt;&lt; Rewind, a psychological horror mystery for PC and
+              consoles.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Team -->
+    <section class="py-16 md:py-24">
+      <div class="max-w-5xl mx-auto px-6 md:px-12">
+        <SectionHeading
+          title="The Team"
+          subtitle="Four people. One vision. Really good games."
+        />
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {team.map((member) => (
+            <div class="group bg-bg-surface border border-white/5 rounded-sm p-8 hover:border-accent-primary/20 transition-all">
+              <div class="flex items-start gap-6">
+                <!-- Avatar -->
+                <div class="w-20 h-20 flex-shrink-0 rounded-sm bg-bg-elevated flex items-center justify-center">
+                  <span class="font-heading text-xl text-text-muted">
+                    {member.name.split(' ').map(n => n[0]).join('')}
+                  </span>
+                </div>
+
+                <div class="flex-1">
+                  <h3 class="font-heading text-[11px] text-text-primary uppercase tracking-wider mb-1">
+                    {member.name}
+                  </h3>
+                  <p class="text-accent-primary-muted text-sm mb-4">{member.role}</p>
+
+                  <!-- Fun stats -->
+                  <div class="space-y-2">
+                    {member.funStats.slice(0, 3).map((stat) => (
+                      <div>
+                        <div class="flex justify-between mb-0.5">
+                          <span class="text-[9px] text-text-muted font-mono uppercase">{stat.label}</span>
+                          <span class="text-[9px] text-accent-primary font-mono">{stat.value}%</span>
+                        </div>
+                        <div class="h-1 bg-bg-elevated rounded-sm overflow-hidden">
+                          <div class="h-full bg-accent-primary/60 rounded-sm transition-all duration-500" style={`width: ${stat.value}%;`} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="py-16 md:py-24 text-center bg-bg-surface/30">
+      <div class="max-w-2xl mx-auto px-6">
+        <h2 class="font-heading text-base text-text-primary uppercase tracking-wider mb-4 neon-text-subtle">
+          Get in Touch
+        </h2>
+        <p class="text-text-secondary mb-2">{companyAddress}</p>
+        <a
+          href={`mailto:${contactEmail}`}
+          class="text-accent-primary hover:text-accent-primary-muted transition-colors"
+        >
+          {contactEmail}
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

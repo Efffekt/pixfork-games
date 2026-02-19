@@ -1,0 +1,103 @@
+---
+import KonamiCode from '../components/effects/KonamiCode.tsx';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Pixfork Games — Indie Game Studio',
+  description = 'Norwegian indie game studio crafting unforgettable experiences. From ocean depths to neon mazes to Cold War cassette tapes.',
+  ogImage = '/images/logo/pixfork-icon.svg',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Pixfork Games AS" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Pixfork Games" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Press+Start+2P&family=Space+Grotesk:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Pixfork Games AS",
+      "url": "https://pixfork.com",
+      "logo": ogImage,
+      "description": description,
+      "foundingDate": "2022",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nesoddtangen",
+        "addressCountry": "NO"
+      },
+      "sameAs": [
+        "https://www.instagram.com/pixfork_games/",
+        "https://www.youtube.com/@pixforkgames",
+        "https://www.facebook.com/pixforkgames"
+      ]
+    })} />
+
+    <!-- Console Easter Egg -->
+    <script is:inline>
+      console.log('%c' + [
+        '╔══════════════════════════════════════╗',
+        '║   ▄▄▄▄    ▄▄  ▄▄  ▄▄▄▄  ▄▄▄▄  ▄▄  ║',
+        '║   █  █ ▀█ ██  █▄  █  █  █▄▀ █ ██  ║',
+        '║   █▀▀▀ ██  ▀█ █   █▀▀█  █ ▀▄█ ▀█▄ ║',
+        '║   ▀    ▀▀▀ ▀▀ ▀   ▀  ▀  ▀   ▀  ▀▀ ║',
+        '║           PIXFORK GAMES              ║',
+        '║      We make games. Good ones.       ║',
+        '║                                      ║',
+        '║   Like what you see? Check out our   ║',
+        '║   games at pixfork.com               ║',
+        '╚══════════════════════════════════════╝',
+      ].join('\n'), 'color: #00F5FF; font-family: monospace; font-size: 12px;');
+    </script>
+  </head>
+  <body class="min-h-screen bg-bg-deep text-text-secondary antialiased custom-cursor">
+    <!-- CRT Scanline Overlay -->
+    <div class="scanline-overlay" aria-hidden="true"></div>
+
+    <!-- Konami Code Easter Egg -->
+    <KonamiCode client:idle />
+
+    <slot />
+  </body>
+</html>

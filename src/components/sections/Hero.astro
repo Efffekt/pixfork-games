@@ -1,0 +1,228 @@
+---
+import BootSequence from '../effects/BootSequence.tsx';
+import PixelParticles from '../effects/PixelParticles.tsx';
+import GlitchText from '../effects/GlitchText.tsx';
+import { games } from '../../data/games';
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Boot Sequence (React island, dispatches 'boot-complete' CustomEvent) -->
+  <BootSequence client:load />
+
+  <!-- Particle background -->
+  <PixelParticles client:visible density={50} />
+
+  <!-- Animated gradient background -->
+  <div class="absolute inset-0" aria-hidden="true">
+    <!-- Deep base -->
+    <div class="absolute inset-0 bg-bg-deep"></div>
+
+    <!-- Radial glow from center -->
+    <div class="absolute inset-0 hero-glow opacity-40"></div>
+
+    <!-- Top-down atmospheric gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0D1B2A]/60 via-transparent to-bg-deep"></div>
+  </div>
+
+  <!-- Perspective grid floor -->
+  <div class="absolute inset-x-0 bottom-0 h-[45%] hero-grid opacity-[0.06]" aria-hidden="true"></div>
+
+  <!-- Vertical light rays -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div class="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-accent-primary/10 via-accent-primary/3 to-transparent"></div>
+    <div class="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-accent-secondary/8 via-transparent to-transparent"></div>
+  </div>
+
+  <!-- Hero content (hidden until boot completes) -->
+  <div
+    id="hero-content"
+    class="relative z-10 text-center px-6 max-w-5xl mx-auto opacity-0 transition-opacity duration-1000"
+  >
+    <!-- Logo with glow rings -->
+    <div class="mb-8 flex justify-center relative">
+      <!-- Outer glow ring -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 md:w-44 md:h-44 rounded-full border border-accent-primary/10 animate-[glow-pulse_4s_ease-in-out_infinite]"></div>
+      <!-- Inner glow ring -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 md:w-36 md:h-36 rounded-full border border-accent-primary/5 animate-[glow-pulse_4s_ease-in-out_infinite_0.5s]"></div>
+      <!-- Logo -->
+      <img
+        src={`${baseUrl}images/logo/pixfork-icon.svg`}
+        alt="Pixfork Games"
+        class="w-20 h-20 md:w-24 md:h-24 animate-[float_6s_ease-in-out_infinite] relative z-10 drop-shadow-[0_0_20px_rgba(0,245,255,0.3)]"
+      />
+    </div>
+
+    <!-- Title with glitch -->
+    <h1 class="relative font-heading text-xl md:text-3xl lg:text-4xl text-text-primary uppercase tracking-wider mb-6">
+      <GlitchText
+        client:visible
+        text="PIXFORK GAMES"
+        as="span"
+        glitchOnHover={true}
+        autoGlitch={true}
+        autoGlitchInterval={6000}
+        className="neon-text"
+      />
+    </h1>
+
+    <!-- Decorative separator -->
+    <div class="flex items-center justify-center gap-3 mb-6">
+      <div class="w-12 h-px bg-gradient-to-r from-transparent to-accent-primary/50"></div>
+      <div class="flex gap-1">
+        <div class="w-1.5 h-1.5 bg-accent-primary/60 rounded-full"></div>
+        <div class="w-1.5 h-1.5 bg-accent-secondary/60 rounded-full"></div>
+        <div class="w-1.5 h-1.5 bg-accent-tertiary/60 rounded-full"></div>
+      </div>
+      <div class="w-12 h-px bg-gradient-to-l from-transparent to-accent-primary/50"></div>
+    </div>
+
+    <!-- Tagline -->
+    <p class="font-body text-lg md:text-xl text-text-secondary mb-3 tracking-wide">
+      Producing really good games for a demanding audience.
+    </p>
+    <p class="font-mono text-sm text-text-muted mb-12">
+      Based in Nesoddtangen, Norway &mdash; Est. 2022
+    </p>
+
+    <!-- Game preview cards -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      {games.map((game) => (
+        <a
+          href={`${baseUrl}games/${game.slug}`}
+          class="group relative bg-bg-surface/60 backdrop-blur-sm border border-white/5 rounded-sm px-5 py-4 hover:border-current transition-all duration-300 text-left min-w-[180px] max-w-[220px]"
+          style={`--card-color: ${game.accentColor}; color: ${game.accentColor}`}
+        >
+          <div class="flex items-center gap-2 mb-2">
+            {game.slug === 'on-tape-rewind' && (
+              <svg class="w-4 h-4 opacity-60 group-hover:animate-[tape-spin_1s_linear_infinite]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="8" cy="14" r="3" />
+                <circle cx="16" cy="14" r="3" />
+                <path d="M5 14h14" />
+                <rect x="2" y="6" width="20" height="12" rx="2" />
+              </svg>
+            )}
+            {game.slug === 'neon-zone' && (
+              <svg class="w-4 h-4 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+            )}
+            {game.slug === 'ascending' && (
+              <svg class="w-4 h-4 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+                <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+                <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+              </svg>
+            )}
+            <span class="font-heading text-[8px] uppercase tracking-wider truncate">
+              {game.title}
+            </span>
+          </div>
+          <p class="text-text-muted text-xs leading-relaxed line-clamp-2">
+            {game.tagline}
+          </p>
+          {game.status === 'coming-soon' && (
+            <span class="inline-block mt-2 font-mono text-[9px] uppercase tracking-wider opacity-70">
+              Coming {game.releaseYear}
+              <span class="inline-block w-1.5 h-3 bg-current ml-1 animate-[blink-cursor_1s_step-end_infinite]"></span>
+            </span>
+          )}
+          {game.status === 'released' && (
+            <span class="inline-block mt-2 font-mono text-[9px] text-text-muted uppercase tracking-wider">
+              {game.platforms.includes('steam') ? 'PC / Console' : 'iOS / Android'}
+            </span>
+          )}
+          <!-- Hover glow -->
+          <div class="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={`box-shadow: inset 0 0 20px ${game.accentColor}15, 0 0 15px ${game.accentColor}10`}></div>
+        </a>
+      ))}
+    </div>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a
+        href="#games"
+        class="pixel-border px-8 py-4 font-heading text-xs text-accent-primary uppercase tracking-wider hover:shadow-[0_0_25px_rgba(0,245,255,0.2)] transition-shadow"
+      >
+        Explore Our Games
+      </a>
+      <a
+        href={`${baseUrl}games/on-tape-rewind`}
+        class="group flex items-center gap-2 px-6 py-3 border-2 border-game-ontape text-game-ontape font-heading text-[10px] uppercase tracking-wider hover:bg-game-ontape hover:text-bg-deep transition-all"
+      >
+        <svg class="w-4 h-4 group-hover:animate-[tape-spin_1s_linear_infinite]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="8" cy="14" r="3" />
+          <circle cx="16" cy="14" r="3" />
+          <path d="M5 14h14" />
+          <rect x="2" y="6" width="20" height="12" rx="2" />
+        </svg>
+        Wishlist On Tape &lt;&lt; Rewind
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-[scroll-bounce_2s_ease-in-out_infinite] opacity-0 transition-opacity duration-1000" id="scroll-indicator">
+    <div class="flex flex-col items-center gap-2">
+      <span class="font-mono text-[9px] text-text-muted uppercase tracking-widest">Scroll</span>
+      <svg
+        class="w-5 h-5 text-text-muted"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="6 9 12 15 18 9" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-glow {
+    background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(0, 245, 255, 0.08) 0%, rgba(127, 47, 255, 0.04) 40%, transparent 70%);
+  }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(rgba(0, 245, 255, 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 245, 255, 0.4) 1px, transparent 1px);
+    background-size: 60px 60px;
+    transform: perspective(500px) rotateX(60deg);
+    transform-origin: center top;
+    mask-image: linear-gradient(to top, transparent, black 30%, black 70%, transparent);
+    -webkit-mask-image: linear-gradient(to top, transparent, black 30%, black 70%, transparent);
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-glow,
+    .hero-grid {
+      animation: none !important;
+    }
+  }
+</style>
+
+<script>
+  function showHero() {
+    const hero = document.getElementById('hero-content');
+    const scroll = document.getElementById('scroll-indicator');
+    if (hero) hero.classList.remove('opacity-0');
+    if (scroll) scroll.classList.remove('opacity-0');
+  }
+
+  // If already booted this session, show immediately
+  if (sessionStorage.getItem('pixfork-booted')) {
+    showHero();
+  }
+
+  // Listen for boot-complete event from BootSequence
+  window.addEventListener('boot-complete', showHero);
+</script>

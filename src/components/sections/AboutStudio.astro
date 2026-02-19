@@ -1,0 +1,86 @@
+---
+import { team } from '../../data/team';
+import SectionHeading from '../ui/SectionHeading.astro';
+---
+
+<section id="about" class="relative py-24 md:py-32">
+  <!-- Neon grid background -->
+  <div
+    class="absolute inset-0 opacity-[0.03]"
+    style="background-image: linear-gradient(var(--color-accent-primary) 1px, transparent 1px), linear-gradient(90deg, var(--color-accent-primary) 1px, transparent 1px); background-size: 48px 48px;"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+    <SectionHeading title="The Studio" />
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <!-- Studio description -->
+      <div class="space-y-6">
+        <p class="text-text-secondary text-lg leading-relaxed">
+          Founded in 2022, <strong class="text-text-primary">Pixfork Games</strong> is an independent
+          game studio based in Nesoddtangen, Norway. With great passion, we aim at producing
+          engaging stories and really good games for a demanding audience.
+        </p>
+        <p class="text-text-secondary text-lg leading-relaxed">
+          From the depths of the ocean in <em class="text-game-ascending">Ascending</em>,
+          through neon-lit mazes in <em class="text-game-neonzone">Neon Zone</em>, to the
+          haunting cassette tapes of <em class="text-game-ontape">On Tape &lt;&lt; Rewind</em>
+          &mdash; we create experiences that stick with you.
+        </p>
+        <div class="flex items-center gap-3 pt-4">
+          <svg class="w-5 h-5 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <span class="text-text-muted text-sm font-mono">Nesoddtangen, Norway</span>
+        </div>
+      </div>
+
+      <!-- Team grid -->
+      <div class="grid grid-cols-2 gap-4">
+        {team.map((member) => (
+          <div class="group relative bg-bg-surface border border-white/5 rounded-sm p-4 hover:border-accent-primary/30 transition-all duration-300 overflow-hidden">
+            <!-- Avatar placeholder -->
+            <div class="w-16 h-16 rounded-sm bg-bg-elevated mb-3 flex items-center justify-center overflow-hidden">
+              <span class="font-heading text-lg text-text-muted">
+                {member.name.split(' ').map(n => n[0]).join('')}
+              </span>
+            </div>
+
+            <!-- Info -->
+            <h3 class="font-heading text-[10px] text-text-primary uppercase tracking-wider mb-1">
+              {member.name.split(' ')[0]}
+            </h3>
+            <p class="text-text-muted text-xs">{member.role}</p>
+
+            <!-- Hover: RPG stats -->
+            <div class="absolute inset-0 bg-bg-surface/95 p-4 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="font-heading text-[8px] text-accent-primary uppercase tracking-widest mb-3">
+                Stats
+              </p>
+              {member.funStats.map((stat) => (
+                <div class="mb-2">
+                  <div class="flex justify-between mb-0.5">
+                    <span class="text-[9px] text-text-muted font-mono uppercase">
+                      {stat.label}
+                    </span>
+                    <span class="text-[9px] text-accent-primary font-mono">
+                      {stat.value}%
+                    </span>
+                  </div>
+                  <div class="h-1 bg-bg-elevated rounded-sm overflow-hidden">
+                    <div
+                      class="h-full bg-accent-primary/70 rounded-sm"
+                      style={`width: ${stat.value}%;`}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

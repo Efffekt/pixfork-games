@@ -1,0 +1,18 @@
+---
+interface Props {
+  color?: string;
+  class?: string;
+}
+
+const { color = 'var(--color-accent-primary)', class: className = '' } = Astro.props;
+---
+
+<span
+  class:list={[
+    'inline-block px-3 py-1 text-[10px] font-heading uppercase tracking-widest border',
+    className,
+  ]}
+  style={`border-color: ${color}; color: ${color};`}
+>
+  <slot />
+</span>

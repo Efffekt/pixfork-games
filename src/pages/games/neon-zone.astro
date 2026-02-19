@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/layout/Navbar.astro';
+import Footer from '../../components/layout/Footer.astro';
+import PixelParticles from '../../components/effects/PixelParticles.tsx';
+import Badge from '../../components/ui/Badge.astro';
+import { games } from '../../data/games';
+
+const game = games.find((g) => g.slug === 'neon-zone')!;
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Neon Zone — Pixfork Games"
+  description={game.description}
+>
+  <Navbar />
+
+  <main>
+    <!-- Neon Hero -->
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+      <!-- Synthwave grid background -->
+      <div
+        class="absolute inset-0 opacity-[0.04]"
+        style="background-image: linear-gradient(var(--color-game-neonzone) 1px, transparent 1px), linear-gradient(90deg, var(--color-game-neonzone) 1px, transparent 1px); background-size: 48px 48px;"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Magenta gradient -->
+      <div class="absolute inset-0 bg-gradient-to-b from-[#12001A] via-[#0A0A0F] to-bg-deep" aria-hidden="true"></div>
+
+      <!-- Neon particles -->
+      <PixelParticles
+        client:visible
+        density={50}
+        colors={['#FF006E', '#E91E8C', '#7B2FFF', '#FF006E']}
+      />
+
+      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <!-- Game info -->
+          <div class="space-y-8">
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <Badge color="var(--color-game-neonzone)">Available Now</Badge>
+              </div>
+
+              <h1
+                class="font-heading text-xl md:text-3xl uppercase tracking-wider leading-relaxed mb-6"
+                style="color: var(--color-game-neonzone); text-shadow: 0 0 10px #FF006E66, 0 0 20px #FF006E33;"
+              >
+                Neon Zone
+              </h1>
+
+              <p class="text-text-secondary text-xl leading-relaxed">
+                {game.description}
+              </p>
+            </div>
+
+            <!-- Genre badges -->
+            <div class="flex flex-wrap gap-2">
+              {game.genre.map((g) => (
+                <Badge color="var(--color-game-neonzone)">{g}</Badge>
+              ))}
+            </div>
+
+            <!-- Platform + download -->
+            <div class="flex flex-wrap gap-4">
+              {game.storeLinks.appStore && (
+                <a
+                  href={game.storeLinks.appStore}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-6 py-3 bg-bg-surface border-2 border-game-neonzone text-game-neonzone font-heading text-[10px] uppercase tracking-wider hover:bg-game-neonzone hover:text-bg-deep transition-all shadow-[0_0_10px_#FF006E33] hover:shadow-[0_0_20px_#FF006E66]"
+                >
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                  App Store
+                </a>
+              )}
+              {game.storeLinks.googlePlay && (
+                <a
+                  href={game.storeLinks.googlePlay}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-6 py-3 bg-bg-surface border-2 border-game-neonzone/60 text-game-neonzone/80 font-heading text-[10px] uppercase tracking-wider hover:border-game-neonzone hover:text-game-neonzone hover:bg-game-neonzone/10 transition-all"
+                >
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.609 22.186a.996.996 0 0 1-.609-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.698-2.302 2.698-2.302zM5.864 2.658L16.801 8.99l-2.302 2.302-8.635-8.634z"/></svg>
+                  Google Play
+                </a>
+              )}
+            </div>
+          </div>
+
+          <!-- Phone mockup placeholder -->
+          <div class="relative flex justify-center">
+            <div class="relative w-64 aspect-[9/19.5] bg-bg-surface border-2 border-game-neonzone/30 rounded-3xl overflow-hidden shadow-[0_0_30px_#FF006E22]">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center">
+                  <div class="font-heading text-sm text-game-neonzone/30 mb-2">NZ</div>
+                  <p class="font-mono text-[10px] text-text-muted/30">// GAMEPLAY</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    {game.features && (
+      <section class="py-24 md:py-32">
+        <div class="max-w-5xl mx-auto px-6 md:px-12">
+          <h2 class="font-heading text-base text-text-primary uppercase tracking-wider text-center mb-16" style="text-shadow: 0 0 8px #FF006E44;">
+            Features
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {game.features.map((feature) => (
+              <div class="text-center bg-bg-surface border border-white/5 rounded-sm p-8 hover:border-game-neonzone/30 transition-all">
+                <div class="w-12 h-12 mx-auto bg-bg-elevated rounded-sm flex items-center justify-center mb-4">
+                  <svg class="w-6 h-6 text-game-neonzone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    {feature.icon === 'Zap' && <><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></>}
+                    {feature.icon === 'Gamepad2' && <><line x1="6" y1="11" x2="10" y2="11"/><line x1="8" y1="9" x2="8" y2="13"/><line x1="15" y1="12" x2="15.01" y2="12"/><line x1="18" y1="10" x2="18.01" y2="10"/><path d="M17.32 5H6.68a4 4 0 00-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 003 3c1.652 0 2.536-.67 3.286-1.322.44-.384.898-.478 1.344-.478h4.74c.446 0 .904.094 1.344.478C16.464 18.33 17.348 19 19 19a3 3 0 003-3c0-1.544-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0017.32 5z"/></>}
+                    {feature.icon === 'Trophy' && <><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></>}
+                  </svg>
+                </div>
+                <h3 class="font-heading text-[10px] text-text-primary uppercase tracking-wider mb-3">{feature.title}</h3>
+                <p class="text-text-secondary text-sm leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Videos -->
+    <section class="py-24 md:py-32 bg-bg-surface/50">
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <h2 class="font-heading text-base text-text-primary uppercase tracking-wider text-center mb-16" style="text-shadow: 0 0 8px #FF006E44;">
+          Videos
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Commentary Track -->
+          <div>
+            <div class="relative aspect-video rounded-sm overflow-hidden bg-bg-elevated">
+              <iframe
+                class="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/i_AUhIC4c5I"
+                title="Neon Zone — Commentary Track"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+            <p class="font-heading text-[10px] text-game-neonzone/60 uppercase tracking-wider mt-3">
+              Commentary Track
+            </p>
+          </div>
+
+          <!-- Soundtrack: Maze Mazter -->
+          <div>
+            <div class="relative aspect-video rounded-sm overflow-hidden bg-bg-elevated">
+              <iframe
+                class="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/f7s7oxJJJsc"
+                title="Neon Zone Zoundtrack 01: Maze Mazter"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+            <p class="font-heading text-[10px] text-game-neonzone/60 uppercase tracking-wider mt-3">
+              Zoundtrack 01 — Maze Mazter
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,338 @@
+@import "tailwindcss";
+
+/* ============================================
+   PIXFORK GAMES — DESIGN SYSTEM
+   ============================================ */
+
+@theme {
+  /* Background */
+  --color-bg-deep: #0A0A0F;
+  --color-bg-surface: #12121A;
+  --color-bg-elevated: #1A1A2E;
+
+  /* Primary Accent (Neon Cyan) */
+  --color-accent-primary: #00F5FF;
+  --color-accent-primary-muted: #4ECDC4;
+
+  /* Secondary Accent (Neon Magenta) */
+  --color-accent-secondary: #FF006E;
+  --color-accent-secondary-muted: #E91E8C;
+
+  /* Tertiary Accent (Electric Purple) */
+  --color-accent-tertiary: #7B2FFF;
+
+  /* Text */
+  --color-text-primary: #F0F0F0;
+  --color-text-secondary: #A0A0B0;
+  --color-text-muted: #5A5A6E;
+
+  /* Game-specific */
+  --color-game-ascending: #0077B6;
+  --color-game-neonzone: #FF006E;
+  --color-game-ontape: #4ECDC4;
+
+  /* Functional */
+  --color-steam-dark: #1B2838;
+  --color-steam-blue: #66C0F4;
+  --color-success: #00FF88;
+
+  /* Font families */
+  --font-heading: 'Press Start 2P', monospace;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Animations */
+  --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
+  --animate-scanline-flicker: scanline-flicker 4s ease-in-out infinite;
+  --animate-blink-cursor: blink-cursor 1s step-end infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-vhs-tracking: vhs-tracking 0.3s ease-out;
+  --animate-neon-flicker: neon-flicker 3s ease-in-out infinite;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-secondary);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-accent-primary) 30%, transparent);
+  color: var(--color-text-primary);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-elevated);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-primary-muted);
+}
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes scanline-flicker {
+  0%, 100% { opacity: 0.06; }
+  50% { opacity: 0.09; }
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes vhs-tracking {
+  0% { transform: translateX(-4px); opacity: 0.8; }
+  50% { transform: translateX(2px); opacity: 0.9; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+      0 0 7px var(--color-accent-primary),
+      0 0 10px var(--color-accent-primary),
+      0 0 21px var(--color-accent-primary),
+      0 0 42px var(--color-accent-primary-muted);
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(0 0 0 0); transform: translateX(0); }
+  10% { clip-path: inset(10% 0 85% 0); transform: translateX(-3px); }
+  20% { clip-path: inset(50% 0 30% 0); transform: translateX(3px); }
+  30% { clip-path: inset(20% 0 60% 0); transform: translateX(-2px); }
+  40% { clip-path: inset(70% 0 10% 0); transform: translateX(2px); }
+  50% { clip-path: inset(0 0 0 0); transform: translateX(0); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(0 0 0 0); transform: translateX(0); }
+  15% { clip-path: inset(40% 0 40% 0); transform: translateX(2px); }
+  25% { clip-path: inset(80% 0 5% 0); transform: translateX(-2px); }
+  35% { clip-path: inset(5% 0 80% 0); transform: translateX(3px); }
+  45% { clip-path: inset(60% 0 20% 0); transform: translateX(-1px); }
+  55% { clip-path: inset(0 0 0 0); transform: translateX(0); }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+@keyframes tape-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Scanline overlay */
+.scanline-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(0, 0, 0, 0.08) 1px,
+    rgba(0, 0, 0, 0.08) 2px
+  );
+  animation: scanline-flicker 4s ease-in-out infinite;
+}
+
+/* Neon text glow */
+.neon-text {
+  text-shadow:
+    0 0 7px var(--color-accent-primary),
+    0 0 10px var(--color-accent-primary),
+    0 0 21px var(--color-accent-primary),
+    0 0 42px var(--color-accent-primary-muted);
+}
+
+.neon-text-magenta {
+  text-shadow:
+    0 0 7px var(--color-accent-secondary),
+    0 0 10px var(--color-accent-secondary),
+    0 0 21px var(--color-accent-secondary),
+    0 0 42px var(--color-accent-secondary-muted);
+}
+
+.neon-text-subtle {
+  text-shadow:
+    0 0 4px var(--color-accent-primary),
+    0 0 8px color-mix(in srgb, var(--color-accent-primary) 40%, transparent);
+}
+
+/* Neon box glow */
+.neon-border {
+  box-shadow:
+    0 0 5px color-mix(in srgb, var(--color-accent-primary) 30%, transparent),
+    0 0 10px color-mix(in srgb, var(--color-accent-primary) 15%, transparent),
+    inset 0 0 5px color-mix(in srgb, var(--color-accent-primary) 10%, transparent);
+}
+
+/* Glitch text effect */
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.glitch-text::before {
+  color: var(--color-accent-primary);
+  animation: glitch-1 4s infinite linear;
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+.glitch-text::after {
+  color: var(--color-accent-secondary);
+  animation: glitch-2 4s infinite linear;
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+.glitch-text:hover::before,
+.glitch-text:hover::after {
+  opacity: 0.8;
+}
+
+/* VHS noise overlay */
+.vhs-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+  mix-blend-mode: overlay;
+}
+
+/* Pixel border button */
+.pixel-border {
+  position: relative;
+  border: 2px solid var(--color-accent-primary);
+  box-shadow:
+    4px 4px 0 0 var(--color-accent-primary),
+    -1px -1px 0 0 var(--color-accent-primary);
+  transition: all 0.2s ease;
+}
+
+.pixel-border:hover {
+  background-color: var(--color-accent-primary);
+  color: var(--color-bg-deep);
+  box-shadow:
+    4px 4px 0 0 var(--color-accent-primary),
+    -1px -1px 0 0 var(--color-accent-primary),
+    0 0 20px color-mix(in srgb, var(--color-accent-primary) 40%, transparent);
+}
+
+.pixel-border:active {
+  transform: translate(2px, 2px);
+  box-shadow:
+    2px 2px 0 0 var(--color-accent-primary),
+    0 0 20px color-mix(in srgb, var(--color-accent-primary) 40%, transparent);
+}
+
+/* Focus ring for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 4px;
+}
+
+/* Custom cursor (non-touch devices only) */
+@media (pointer: fine) {
+  .custom-cursor {
+    cursor: url('/pixfork-games/cursors/pixel-fork.svg') 7 0, auto;
+  }
+
+  .custom-cursor a,
+  .custom-cursor button,
+  .custom-cursor [role="button"],
+  .custom-cursor input[type="submit"] {
+    cursor: url('/pixfork-games/cursors/pixel-fork.svg') 7 0, pointer;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .scanline-overlay {
+    display: none;
+  }
+}

@@ -1,0 +1,101 @@
+---
+import VHSEffect from '../effects/VHSEffect.tsx';
+import Badge from '../ui/Badge.astro';
+import SteamButton from '../ui/SteamButton.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<section id="featured" class="relative py-24 md:py-32 overflow-hidden">
+  <!-- VHS Effect overlay -->
+  <VHSEffect client:visible intensity="medium" />
+
+  <!-- Background atmospheric gradient -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-bg-deep via-[#0D1B2A] to-bg-deep"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left: Trailer embed -->
+      <div class="relative aspect-video lg:aspect-[4/3] rounded-sm overflow-hidden group">
+        <iframe
+          class="absolute inset-0 w-full h-full"
+          src="https://www.youtube.com/embed/gH2kgX3BifY"
+          title="On Tape Rewind — Announcement Teaser 4K"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+
+        <!-- VHS noise overlay on video -->
+        <div class="vhs-overlay pointer-events-none"></div>
+      </div>
+
+      <!-- Right: Game info -->
+      <div class="space-y-6">
+        <!-- Status label -->
+        <div class="flex items-center gap-2">
+          <span class="font-heading text-[10px] text-game-ontape uppercase tracking-widest">
+            Coming 2027
+          </span>
+          <span class="inline-block w-2 h-4 bg-game-ontape animate-[blink-cursor_1s_step-end_infinite]"></span>
+        </div>
+
+        <!-- Title -->
+        <h2
+          class="glitch-text font-heading text-lg md:text-2xl text-text-primary uppercase tracking-wider leading-relaxed"
+          data-text="ON TAPE << REWIND"
+        >
+          ON TAPE &lt;&lt; REWIND
+        </h2>
+
+        <!-- Description -->
+        <p class="text-text-secondary text-lg leading-relaxed">
+          A chilling detective story told through cassette tapes. Play back
+          recordings, search for clues, discover hidden cassettes, and
+          manipulate audio to unravel the disappearance of physicist Fred
+          Karlsen during the Cold War.
+        </p>
+        <p class="text-text-muted text-base italic font-body">
+          Something listened back.
+        </p>
+
+        <!-- Genre badges -->
+        <div class="flex flex-wrap gap-2">
+          <Badge color="var(--color-game-ontape)">Psychological Horror</Badge>
+          <Badge color="var(--color-game-ontape)">Mystery</Badge>
+          <Badge color="var(--color-game-ontape)">Cold War</Badge>
+        </div>
+
+        <!-- Platforms -->
+        <div class="flex items-center gap-2 text-text-muted text-sm">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+            <line x1="8" y1="21" x2="16" y2="21" />
+            <line x1="12" y1="17" x2="12" y2="21" />
+          </svg>
+          <span>PC / Console</span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap gap-4 pt-2">
+          <SteamButton />
+          <a
+            href={`${baseUrl}games/on-tape-rewind`}
+            class="inline-flex items-center gap-2 px-6 py-3 border-2 border-text-muted text-text-secondary font-heading text-[10px] uppercase tracking-wider hover:border-game-ontape hover:text-game-ontape transition-all"
+          >
+            Learn More
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

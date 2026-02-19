@@ -1,0 +1,47 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'steam';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+  target?: string;
+  rel?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  class: className = '',
+  target,
+  rel,
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+
+const sizeClasses = {
+  sm: 'px-4 py-2 text-[10px]',
+  md: 'px-6 py-3 text-xs',
+  lg: 'px-8 py-4 text-sm',
+};
+
+const variantClasses = {
+  primary: 'pixel-border font-heading uppercase tracking-wider text-accent-primary',
+  secondary: 'border-2 border-text-muted text-text-secondary font-heading uppercase tracking-wider hover:border-accent-primary hover:text-accent-primary transition-colors',
+  steam: 'bg-steam-dark text-white font-heading uppercase tracking-wider border-2 border-steam-blue hover:bg-steam-blue hover:text-steam-dark transition-all shadow-[0_0_10px_rgba(102,192,244,0.2)] hover:shadow-[0_0_20px_rgba(102,192,244,0.4)]',
+};
+---
+
+<Tag
+  href={href}
+  target={target}
+  rel={rel}
+  class:list={[
+    'inline-block cursor-pointer select-none whitespace-nowrap',
+    sizeClasses[size],
+    variantClasses[variant],
+    className,
+  ]}
+>
+  <slot />
+</Tag>
