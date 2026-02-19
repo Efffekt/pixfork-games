@@ -28,24 +28,14 @@ const platformIcons: Record<string, string> = {
           accentColor={game.accentColor}
           comingSoon={game.status === 'coming-soon'}
         >
-          <!-- Image placeholder -->
+          <!-- Box art -->
           <div class="relative aspect-video overflow-hidden">
-            <div
-              class="absolute inset-0 flex items-center justify-center"
-              style={`background: linear-gradient(135deg, ${game.accentColor}11, ${game.accentColor}05);`}
-            >
-              <div class="text-center">
-                <div
-                  class="font-heading text-[10px] uppercase tracking-widest opacity-30 mb-2"
-                  style={`color: ${game.accentColor};`}
-                >
-                  {game.title}
-                </div>
-                <p class="font-mono text-[10px] text-text-muted/40">
-                  // SCREENSHOT PLACEHOLDER
-                </p>
-              </div>
-            </div>
+            <img
+              src={`/images/games/${game.slug}/box-art.png`}
+              alt={game.title}
+              class="absolute inset-0 w-full h-full object-cover object-top"
+              loading="lazy"
+            />
 
             {/* VHS effect on On Tape card */}
             {game.slug === 'on-tape-rewind' && (

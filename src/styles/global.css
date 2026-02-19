@@ -10,13 +10,13 @@
   --color-bg-surface: #12121A;
   --color-bg-elevated: #1A1A2E;
 
-  /* Primary Accent (Neon Cyan) */
-  --color-accent-primary: #00F5FF;
-  --color-accent-primary-muted: #4ECDC4;
+  /* Primary Accent (Pixfork Red — from logo) */
+  --color-accent-primary: #E5342D;
+  --color-accent-primary-muted: #B52A24;
 
-  /* Secondary Accent (Neon Magenta) */
-  --color-accent-secondary: #FF006E;
-  --color-accent-secondary-muted: #E91E8C;
+  /* Secondary Accent (Warm White) */
+  --color-accent-secondary: #F0F0F0;
+  --color-accent-secondary-muted: #C0C0C8;
 
   /* Tertiary Accent (Electric Purple) */
   --color-accent-tertiary: #7B2FFF;
@@ -247,7 +247,7 @@ body {
 }
 
 .glitch-text::after {
-  color: var(--color-accent-secondary);
+  color: var(--color-text-primary);
   animation: glitch-2 4s infinite linear;
   mix-blend-mode: screen;
   opacity: 0;

@@ -15,7 +15,7 @@ interface PixelParticlesProps {
   className?: string;
 }
 
-const DEFAULT_COLORS = ['#00F5FF', '#FF006E', '#7B2FFF', '#A0A0B0', '#5A5A6E'];
+const DEFAULT_COLORS = ['#E5342D', '#B52A24', '#7B2FFF', '#A0A0B0', '#5A5A6E'];
 
 export default function PixelParticles({
   density = 40,
