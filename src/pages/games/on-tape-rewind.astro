@@ -22,7 +22,7 @@ const game = games.find((g) => g.slug === 'on-tape-rewind')!;
       <VHSEffect client:visible intensity="medium" />
 
       <!-- Atmospheric background -->
-      <div class="absolute inset-0 bg-gradient-to-b from-[#0D1B2A] via-[#0A0A0F] to-bg-deep" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-bg-surface via-bg-deep to-bg-deep" aria-hidden="true"></div>
 
       <!-- Faint grid lines -->
       <div
@@ -41,7 +41,7 @@ const game = games.find((g) => g.slug === 'on-tape-rewind')!;
               class="absolute inset-0 w-full h-full object-cover"
             />
             <div class="vhs-overlay"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0F] via-transparent to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-bg-deep via-transparent to-transparent"></div>
           </div>
 
           <!-- Game info -->
@@ -176,14 +176,18 @@ const game = games.find((g) => g.slug === 'on-tape-rewind')!;
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {[1, 2, 3].map((i) => (
-            <div class="relative aspect-video rounded-sm overflow-hidden bg-bg-elevated">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <p class="font-mono text-xs text-text-muted/30">// SCREENSHOT {i}</p>
-              </div>
-              <div class="vhs-overlay"></div>
-            </div>
-          ))}
+          <div class="relative aspect-video rounded-sm overflow-hidden bg-bg-elevated">
+            <img src="/images/games/on-tape-rewind/main-screen.jpg" alt="On Tape Rewind — Title screen with snowy landscape" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <div class="vhs-overlay"></div>
+          </div>
+          <div class="relative aspect-video rounded-sm overflow-hidden bg-bg-elevated">
+            <img src="/images/games/on-tape-rewind/main-screen2.jpg" alt="On Tape Rewind — Title screen at sunset" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <div class="vhs-overlay"></div>
+          </div>
+          <div class="relative aspect-video rounded-sm overflow-hidden bg-bg-elevated">
+            <img src="/images/games/on-tape-rewind/main-screen3.jpg" alt="On Tape Rewind — Cabin close-up with silhouette" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <div class="vhs-overlay"></div>
+          </div>
         </div>
       </div>
     </section>

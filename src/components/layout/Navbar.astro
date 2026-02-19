@@ -41,8 +41,33 @@ const navLinks = [
       ))}
     </div>
 
-    <!-- Social + mobile menu -->
+    <!-- Actions -->
     <div class="flex items-center gap-4">
+      <!-- Theme toggle -->
+      <button
+        id="theme-toggle"
+        type="button"
+        class="w-8 h-8 flex items-center justify-center text-text-muted hover:text-accent-primary transition-colors"
+        aria-label="Toggle light/dark mode"
+      >
+        <!-- Sun icon (shown in dark mode) -->
+        <svg class="w-4 h-4 theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg class="w-4 h-4 theme-icon-moon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
       <!-- Steam CTA (desktop only) -->
       <a
         href="/games/on-tape-rewind"
@@ -58,14 +83,38 @@ const navLinks = [
 </header>
 
 <script>
+  // Theme toggle
+  const toggle = document.getElementById('theme-toggle');
+  const sunIcon = toggle?.querySelector('.theme-icon-sun');
+  const moonIcon = toggle?.querySelector('.theme-icon-moon');
+
+  function updateIcons() {
+    const isLight = document.documentElement.classList.contains('light');
+    if (sunIcon) sunIcon.classList.toggle('hidden', isLight);
+    if (moonIcon) moonIcon.classList.toggle('hidden', !isLight);
+  }
+
+  updateIcons();
+
+  toggle?.addEventListener('click', () => {
+    const isLight = document.documentElement.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    updateIcons();
+  });
+
   // Navbar scroll behavior: transparent -> solid
   const navbar = document.getElementById('navbar');
   if (navbar) {
     const updateNavbar = () => {
       if (window.scrollY > window.innerHeight * 0.3) {
-        navbar.style.backgroundColor = 'rgba(10, 10, 15, 0.95)';
+        const isLight = document.documentElement.classList.contains('light');
+        navbar.style.backgroundColor = isLight
+          ? 'rgba(245, 245, 247, 0.95)'
+          : 'rgba(10, 10, 15, 0.95)';
         navbar.style.backdropFilter = 'blur(10px)';
-        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
+        navbar.style.borderBottom = isLight
+          ? '1px solid rgba(0, 0, 0, 0.08)'
+          : '1px solid rgba(255, 255, 255, 0.05)';
       } else {
         navbar.style.backgroundColor = 'transparent';
         navbar.style.backdropFilter = 'none';

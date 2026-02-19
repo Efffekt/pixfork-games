@@ -12,6 +12,11 @@ const navLinks = [
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLight, setIsLight] = useState(false);
+
+  useEffect(() => {
+    setIsLight(document.documentElement.classList.contains('light'));
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -70,6 +75,41 @@ export default function MobileMenu() {
                 {link.label}
               </a>
             ))}
+
+            {/* Theme toggle */}
+            <button
+              className="mt-4 font-heading text-[10px] text-text-muted uppercase tracking-wider hover:text-accent-primary transition-colors flex items-center gap-2"
+              onClick={() => {
+                const next = !isLight;
+                document.documentElement.classList.toggle('light', next);
+                localStorage.setItem('theme', next ? 'light' : 'dark');
+                setIsLight(next);
+                // Update navbar toggle icons
+                const sunIcon = document.querySelector('.theme-icon-sun');
+                const moonIcon = document.querySelector('.theme-icon-moon');
+                sunIcon?.classList.toggle('hidden', next);
+                moonIcon?.classList.toggle('hidden', !next);
+              }}
+            >
+              {isLight ? (
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+              ) : (
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="5"/>
+                  <line x1="12" y1="1" x2="12" y2="3"/>
+                  <line x1="12" y1="21" x2="12" y2="23"/>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                  <line x1="1" y1="12" x2="3" y2="12"/>
+                  <line x1="21" y1="12" x2="23" y2="12"/>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+              )}
+              {isLight ? 'Dark Mode' : 'Light Mode'}
+            </button>
           </nav>
         </div>
       )}

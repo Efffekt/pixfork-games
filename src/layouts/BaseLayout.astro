@@ -23,6 +23,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Theme: prevent flash of wrong theme -->
+    <script is:inline>
+      (function() {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || (!saved && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+          document.documentElement.classList.add('light');
+        }
+      })();
+    </script>
     <link rel="canonical" href={canonicalURL} />
 
     <!-- SEO -->

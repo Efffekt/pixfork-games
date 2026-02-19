@@ -88,7 +88,7 @@ export default function BootSequence() {
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-[#0A0A0F] flex items-center justify-center transition-opacity duration-500 ${
+      className={`fixed inset-0 z-50 bg-bg-deep flex items-center justify-center transition-opacity duration-500 ${
         phase === 'flickering' ? 'opacity-0' : 'opacity-100'
       }`}
     >
@@ -134,14 +134,14 @@ export default function BootSequence() {
         </div>
 
         {/* Progress bar */}
-        <div className="mt-6 h-0.5 bg-[#1A1A2E] rounded-sm overflow-hidden">
+        <div className="mt-6 h-0.5 bg-bg-elevated rounded-sm overflow-hidden">
           <div
             className="h-full bg-[#E5342D] transition-all duration-200"
             style={{ width: `${(currentLine / BOOT_LINES.length) * 100}%` }}
           />
         </div>
 
-        <p className="text-[#5A5A6E] text-xs mt-6 font-mono">
+        <p className="text-text-muted text-xs mt-6 font-mono">
           Press any key to skip
         </p>
       </div>

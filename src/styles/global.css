@@ -321,6 +321,93 @@ body {
   }
 }
 
+/* ============================================
+   LIGHT MODE
+   ============================================ */
+
+html.light {
+  --color-bg-deep: #F5F5F7;
+  --color-bg-surface: #EAEAEF;
+  --color-bg-elevated: #FFFFFF;
+
+  --color-accent-primary: #D42D26;
+  --color-accent-primary-muted: #A82520;
+
+  --color-accent-secondary: #1A1A2E;
+  --color-accent-secondary-muted: #3A3A4E;
+
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #4A4A5A;
+  --color-text-muted: #8A8A9A;
+
+  --color-steam-dark: #E8ECF0;
+  --color-steam-blue: #1B6FA8;
+}
+
+/* Scanlines: hide in light mode */
+html.light .scanline-overlay {
+  display: none;
+}
+
+/* Tone down neon glow effects in light mode */
+html.light .neon-text,
+html.light .neon-text-magenta {
+  text-shadow: none;
+}
+
+html.light .neon-text-subtle {
+  text-shadow: none;
+}
+
+html.light .neon-border {
+  box-shadow:
+    0 0 5px color-mix(in srgb, var(--color-accent-primary) 15%, transparent),
+    0 0 10px color-mix(in srgb, var(--color-accent-primary) 8%, transparent);
+}
+
+/* Glitch text: use multiply blend instead of screen on light bg */
+html.light .glitch-text::before,
+html.light .glitch-text::after {
+  mix-blend-mode: multiply;
+}
+
+/* Pixel border: softer shadow in light mode */
+html.light .pixel-border {
+  box-shadow:
+    3px 3px 0 0 var(--color-accent-primary),
+    -1px -1px 0 0 var(--color-accent-primary);
+}
+
+html.light .pixel-border:hover {
+  box-shadow:
+    3px 3px 0 0 var(--color-accent-primary),
+    -1px -1px 0 0 var(--color-accent-primary),
+    0 0 15px color-mix(in srgb, var(--color-accent-primary) 25%, transparent);
+}
+
+/* Scrollbar: light mode */
+html.light ::-webkit-scrollbar-track {
+  background: var(--color-bg-deep);
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #C8C8D0;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-primary-muted);
+}
+
+/* Logo icon: invert to dark for light backgrounds */
+html.light img[src*="pixfork-icon"] {
+  filter: brightness(0.15);
+}
+
+/* White/5 borders become dark/8 in light mode */
+html.light [class*="border-white/"] {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
