@@ -398,10 +398,11 @@ html.light ::-webkit-scrollbar-thumb:hover {
   background: var(--color-accent-primary-muted);
 }
 
-/* Logo icon: invert to dark for light backgrounds */
-html.light img[src*="pixfork-icon"] {
-  filter: brightness(0.15);
-}
+/* Logo theme switching (white for dark mode, black for light mode) */
+.nav-logo-light, .otr-logo-light { display: none; }
+.nav-logo-dark, .otr-logo-dark { display: block; }
+html.light .nav-logo-dark, html.light .otr-logo-dark { display: none; }
+html.light .nav-logo-light, html.light .otr-logo-light { display: block; }
 
 /* White/5 borders become dark/8 in light mode */
 html.light [class*="border-white/"] {

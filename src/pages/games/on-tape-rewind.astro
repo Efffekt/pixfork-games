@@ -31,34 +31,50 @@ const game = games.find((g) => g.slug === 'on-tape-rewind')!;
         aria-hidden="true"
       ></div>
 
+      <!-- Key art background -->
+      <div class="absolute inset-0 z-[1]">
+        <img
+          src="/images/games/on-tape-rewind/key-art.png"
+          alt=""
+          class="absolute inset-0 w-full h-full object-cover opacity-30"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-bg-deep/80 via-bg-deep/60 to-bg-deep"></div>
+      </div>
+
       <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24 w-full">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <!-- Key art -->
-          <div class="relative aspect-[3/4] max-h-[70vh] rounded-sm overflow-hidden">
+          <!-- Key art card -->
+          <div class="relative aspect-video rounded-sm overflow-hidden shadow-[0_0_40px_rgba(78,205,196,0.15)]">
             <img
-              src="/images/games/on-tape-rewind/box-art.png"
-              alt="On Tape << Rewind"
+              src="/images/games/on-tape-rewind/key-art.png"
+              alt="On Tape << Rewind — Key Art"
               class="absolute inset-0 w-full h-full object-cover"
             />
             <div class="vhs-overlay"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-bg-deep via-transparent to-transparent"></div>
           </div>
 
           <!-- Game info -->
           <div class="space-y-8">
             <div>
-              <div class="flex items-center gap-2 mb-4">
+              <div class="flex items-center gap-2 mb-6">
                 <span class="font-heading text-[10px] text-game-ontape uppercase tracking-widest">
                   Coming 2027
                 </span>
                 <span class="inline-block w-2 h-4 bg-game-ontape animate-[blink-cursor_1s_step-end_infinite]"></span>
               </div>
 
-              <h1
-                class="glitch-text font-heading text-xl md:text-3xl text-text-primary uppercase tracking-wider leading-relaxed mb-6"
-                data-text="ON TAPE << REWIND"
-              >
-                ON TAPE &lt;&lt; REWIND
+              <!-- Hand-drawn game logo -->
+              <h1 class="mb-6">
+                <img
+                  src="/images/games/on-tape-rewind/otr-logo-white.png"
+                  alt="On Tape << Rewind"
+                  class="h-12 md:h-16 w-auto otr-logo-dark"
+                />
+                <img
+                  src="/images/games/on-tape-rewind/otr-logo-black.png"
+                  alt="On Tape << Rewind"
+                  class="h-12 md:h-16 w-auto otr-logo-light hidden"
+                />
               </h1>
 
               <p class="text-text-secondary text-xl leading-relaxed mb-2">
@@ -168,14 +184,59 @@ const game = games.find((g) => g.slug === 'on-tape-rewind')!;
       </div>
     </section>
 
-    <!-- Screenshots placeholder -->
+    <!-- Characters -->
     <section class="py-24 md:py-32">
+      <div class="max-w-5xl mx-auto px-6 md:px-12">
+        <h2 class="font-heading text-base text-text-primary uppercase tracking-wider text-center mb-16 neon-text-subtle">
+          The People on the Tapes
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="group bg-bg-surface border border-white/5 rounded-sm overflow-hidden hover:border-game-ontape/30 transition-all">
+            <div class="aspect-[3/4] max-h-80 overflow-hidden">
+              <img
+                src="/images/games/on-tape-rewind/characters/fred.png"
+                alt="Fred Karlsen — The missing physicist"
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading text-[11px] text-text-primary uppercase tracking-wider mb-2">Fred Karlsen</h3>
+              <p class="text-text-secondary text-sm leading-relaxed">
+                A brilliant physicist stationed at a remote Arctic research outpost during the Cold War. His disappearance triggered an investigation that was quickly buried — until now.
+              </p>
+            </div>
+          </div>
+
+          <div class="group bg-bg-surface border border-white/5 rounded-sm overflow-hidden hover:border-game-ontape/30 transition-all">
+            <div class="aspect-[3/4] max-h-80 overflow-hidden">
+              <img
+                src="/images/games/on-tape-rewind/characters/ingrid.png"
+                alt="Ingrid — A key figure in the investigation"
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading text-[11px] text-text-primary uppercase tracking-wider mb-2">Ingrid</h3>
+              <p class="text-text-secondary text-sm leading-relaxed">
+                A central figure in the recordings. Her voice appears across multiple cassettes, weaving a thread through the mystery that connects the experiments to the disappearance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="py-24 md:py-32 bg-bg-surface/50">
       <div class="max-w-7xl mx-auto px-6 md:px-12">
         <h2 class="font-heading text-base text-text-primary uppercase tracking-wider text-center mb-16 neon-text-subtle">
           Screenshots
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div class="relative aspect-video rounded-sm overflow-hidden bg-bg-elevated">
             <img src="/images/games/on-tape-rewind/main-screen.jpg" alt="On Tape Rewind — Title screen with snowy landscape" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
             <div class="vhs-overlay"></div>
@@ -188,20 +249,58 @@ const game = games.find((g) => g.slug === 'on-tape-rewind')!;
             <img src="/images/games/on-tape-rewind/main-screen3.jpg" alt="On Tape Rewind — Cabin close-up with silhouette" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
             <div class="vhs-overlay"></div>
           </div>
+          <div class="relative aspect-video rounded-sm overflow-hidden bg-bg-elevated">
+            <img src="/images/games/on-tape-rewind/screenshot-4.jpg" alt="Investigation desk with oscilloscope, tape recorder, and arctic window view" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <div class="vhs-overlay"></div>
+          </div>
+          <div class="relative aspect-video rounded-sm overflow-hidden bg-bg-elevated">
+            <img src="/images/games/on-tape-rewind/screenshot-5.jpg" alt="Spitsbergen map pinned to cabin wall" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <div class="vhs-overlay"></div>
+          </div>
+          <div class="relative aspect-video rounded-sm overflow-hidden bg-bg-elevated">
+            <img src="/images/games/on-tape-rewind/screenshot-6.jpg" alt="Cassette player with Experiment #3 tape on detective's desk" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <div class="vhs-overlay"></div>
+          </div>
+          <div class="relative aspect-video rounded-sm overflow-hidden bg-bg-elevated">
+            <img src="/images/games/on-tape-rewind/screenshot-7.jpg" alt="Oscilloscope and tape deck showing audio waveform analysis" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <div class="vhs-overlay"></div>
+          </div>
+          <div class="relative aspect-video rounded-sm overflow-hidden bg-bg-elevated">
+            <img src="/images/games/on-tape-rewind/screenshot-8.jpg" alt="Field notebook with sketches and handwritten observations" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <div class="vhs-overlay"></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Bottom CTA -->
-    <section class="py-24 text-center">
-      <div class="max-w-2xl mx-auto px-6">
-        <h2 class="font-heading text-base md:text-lg text-text-primary uppercase tracking-wider mb-6">
-          Don't miss the investigation
-        </h2>
-        <p class="text-text-secondary mb-8">
-          Wishlist On Tape &lt;&lt; Rewind on Steam to get notified when the game launches.
-        </p>
-        <SteamButton />
+    <!-- Bottom CTA with Steam Deck -->
+    <section class="py-24">
+      <div class="max-w-5xl mx-auto px-6 md:px-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <!-- Steam Deck mockup -->
+          <div class="flex justify-center">
+            <img
+              src="/images/games/on-tape-rewind/steamdeck-mockup.png"
+              alt="On Tape Rewind running on Steam Deck"
+              class="w-full max-w-md drop-shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- CTA text -->
+          <div class="text-center md:text-left">
+            <h2 class="font-heading text-base md:text-lg text-text-primary uppercase tracking-wider mb-4">
+              Don't miss the investigation
+            </h2>
+            <p class="text-text-muted text-sm font-mono uppercase tracking-wider mb-6">
+              PC &bull; Console &bull; Steam Deck
+            </p>
+            <p class="text-text-secondary mb-8">
+              Wishlist On Tape &lt;&lt; Rewind on Steam to get notified when the game launches.
+            </p>
+            <SteamButton />
+          </div>
+        </div>
       </div>
     </section>
   </main>
