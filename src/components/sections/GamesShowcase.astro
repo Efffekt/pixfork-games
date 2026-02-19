@@ -4,8 +4,6 @@ import NeonCard from '../ui/NeonCard.astro';
 import Badge from '../ui/Badge.astro';
 import SectionHeading from '../ui/SectionHeading.astro';
 
-const baseUrl = import.meta.env.BASE_URL;
-
 const platformIcons: Record<string, string> = {
   ios: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>`,
   android: `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.341a.667.667 0 0 0 0-1.334.667.667 0 0 0 0 1.334m-11.046 0a.667.667 0 0 0 0-1.334.667.667 0 0 0 0 1.334m11.405-6.02 2.007-3.476a.416.416 0 0 0-.152-.567.416.416 0 0 0-.568.152L17.12 8.96c-1.555-.707-3.295-1.1-5.12-1.1s-3.565.393-5.12 1.1L4.832 5.43a.416.416 0 0 0-.568-.152.416.416 0 0 0-.152.567l2.007 3.477C2.685 11.16.382 14.951.382 19.234h23.236c0-4.283-2.303-8.074-5.736-9.913"/></svg>`,
@@ -26,7 +24,7 @@ const platformIcons: Record<string, string> = {
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {games.map((game) => (
         <NeonCard
-          href={`${baseUrl}games/${game.slug}`}
+          href={`/games/${game.slug}`}
           accentColor={game.accentColor}
           comingSoon={game.status === 'coming-soon'}
         >

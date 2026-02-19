@@ -1,9 +1,5 @@
 import { useState, useEffect } from 'react';
 
-interface MobileMenuProps {
-  baseUrl: string;
-}
-
 const navLinks = [
   { label: 'Games', href: '/#games' },
   { label: 'On Tape << Rewind', href: '/games/on-tape-rewind' },
@@ -14,7 +10,7 @@ const navLinks = [
   { label: 'Contact', href: '/contact' },
 ];
 
-export default function MobileMenu({ baseUrl }: MobileMenuProps) {
+export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -67,7 +63,7 @@ export default function MobileMenu({ baseUrl }: MobileMenuProps) {
             {navLinks.map((link) => (
               <a
                 key={link.href}
-                href={`${baseUrl}${link.href}`.replace('//', '/')}
+                href={link.href}
                 className="font-heading text-sm text-text-primary uppercase tracking-wider hover:text-accent-primary transition-colors"
                 onClick={() => setIsOpen(false)}
               >

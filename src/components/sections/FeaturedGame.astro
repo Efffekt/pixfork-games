@@ -3,7 +3,6 @@ import VHSEffect from '../effects/VHSEffect.tsx';
 import Badge from '../ui/Badge.astro';
 import SteamButton from '../ui/SteamButton.astro';
 
-const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <section id="featured" class="relative py-24 md:py-32 overflow-hidden">
@@ -85,7 +84,7 @@ const baseUrl = import.meta.env.BASE_URL;
         <div class="flex flex-wrap gap-4 pt-2">
           <SteamButton />
           <a
-            href={`${baseUrl}games/on-tape-rewind`}
+            href="/games/on-tape-rewind"
             class="inline-flex items-center gap-2 px-6 py-3 border-2 border-text-muted text-text-secondary font-heading text-[10px] uppercase tracking-wider hover:border-game-ontape hover:text-game-ontape transition-all"
           >
             Learn More

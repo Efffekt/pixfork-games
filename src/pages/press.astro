@@ -6,7 +6,6 @@ import SectionHeading from '../components/ui/SectionHeading.astro';
 import { games } from '../data/games';
 import { contactEmail, companyAddress } from '../data/socials';
 
-const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout
@@ -72,11 +71,11 @@ const baseUrl = import.meta.env.BASE_URL;
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-bg-surface border border-white/5 rounded-sm p-8 text-center">
               <div class="w-24 h-24 mx-auto mb-4 bg-bg-deep rounded-sm flex items-center justify-center">
-                <img src={`${baseUrl}images/logo/pixfork-icon.svg`} alt="Pixfork icon" class="w-12 h-12" />
+                <img src="/images/logo/pixfork-icon.svg" alt="Pixfork icon" class="w-12 h-12" />
               </div>
               <p class="text-text-muted text-sm mb-2">Pixfork Icon (SVG)</p>
               <a
-                href={`${baseUrl}images/logo/pixfork-icon.svg`}
+                href="/images/logo/pixfork-icon.svg"
                 download
                 class="text-accent-primary text-sm hover:text-accent-primary-muted transition-colors"
               >
@@ -131,7 +130,7 @@ const baseUrl = import.meta.env.BASE_URL;
                     </div>
                   </div>
                   <a
-                    href={`${baseUrl}games/${game.slug}`}
+                    href={`/games/${game.slug}`}
                     class="text-xs font-heading uppercase tracking-wider transition-colors whitespace-nowrap"
                     style={`color: ${game.accentColor};`}
                   >
