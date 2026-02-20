@@ -1,22 +1,14 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'PPMondwest';
-  src: url('/fonts/PPMondwest-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ============================================
    PIXFORK GAMES — DESIGN SYSTEM
    ============================================ */
 
 @theme {
   /* Background */
-  --color-bg-deep: #0A0A0F;
-  --color-bg-surface: #12121A;
-  --color-bg-elevated: #1A1A2E;
+  --color-bg-deep: #0C0C0C;
+  --color-bg-surface: #141414;
+  --color-bg-elevated: #1C1C1C;
 
   /* Primary Accent (Pixfork Red — from logo) */
   --color-accent-primary: #E21D00;
@@ -46,8 +38,17 @@
 
   /* Font families */
   --font-heading: 'Bebas Neue', sans-serif;
-  --font-body: 'Space Grotesk', sans-serif;
-  --font-mono: 'PPMondwest', 'JetBrains Mono', monospace;
+  --font-body: system-ui, -apple-system, Arial, sans-serif;
+  --font-mono: 'Courier New', Courier, monospace;
+
+  /* Border radius — all sharp */
+  --radius-sm: 0px;
+  --radius: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
 
   /* Animations */
   --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
@@ -74,13 +75,13 @@ body {
 }
 
 ::selection {
-  background-color: color-mix(in srgb, var(--color-accent-primary) 30%, transparent);
-  color: var(--color-text-primary);
+  background-color: var(--color-accent-primary);
+  color: var(--color-bg-deep);
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -88,8 +89,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-bg-elevated);
-  border-radius: 2px;
+  background: var(--color-accent-primary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -127,16 +127,8 @@ body {
 }
 
 @keyframes neon-flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    text-shadow:
-      0 0 7px var(--color-accent-primary),
-      0 0 10px var(--color-accent-primary),
-      0 0 21px var(--color-accent-primary),
-      0 0 42px var(--color-accent-primary-muted);
-  }
-  20%, 24%, 55% {
-    text-shadow: none;
-  }
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.6; }
 }
 
 @keyframes glitch-1 {
@@ -181,54 +173,27 @@ body {
    UTILITY CLASSES
    ============================================ */
 
-/* Scanline overlay */
+/* Scanline overlay — disabled in brutalist mode */
 .scanline-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 1px,
-    rgba(0, 0, 0, 0.08) 1px,
-    rgba(0, 0, 0, 0.08) 2px
-  );
-  animation: scanline-flicker 4s ease-in-out infinite;
+  display: none;
 }
 
-/* Neon text glow */
+/* Neon text — brutalist: colour only, no glow */
 .neon-text {
-  text-shadow:
-    0 0 7px var(--color-accent-primary),
-    0 0 10px var(--color-accent-primary),
-    0 0 21px var(--color-accent-primary),
-    0 0 42px var(--color-accent-primary-muted);
+  color: var(--color-accent-primary);
 }
 
 .neon-text-magenta {
-  text-shadow:
-    0 0 7px var(--color-accent-secondary),
-    0 0 10px var(--color-accent-secondary),
-    0 0 21px var(--color-accent-secondary),
-    0 0 42px var(--color-accent-secondary-muted);
+  color: var(--color-accent-secondary);
 }
 
 .neon-text-subtle {
-  text-shadow:
-    0 0 4px var(--color-accent-primary),
-    0 0 8px color-mix(in srgb, var(--color-accent-primary) 40%, transparent);
+  color: var(--color-accent-primary);
 }
 
-/* Neon box glow */
+/* Neon box — brutalist: hard solid border */
 .neon-border {
-  box-shadow:
-    0 0 5px color-mix(in srgb, var(--color-accent-primary) 30%, transparent),
-    0 0 10px color-mix(in srgb, var(--color-accent-primary) 15%, transparent),
-    inset 0 0 5px color-mix(in srgb, var(--color-accent-primary) 10%, transparent);
+  border: 2px solid var(--color-accent-primary);
 }
 
 /* Glitch text effect */
@@ -283,30 +248,24 @@ body {
   mix-blend-mode: overlay;
 }
 
-/* Pixel border button */
+/* Pixel border button — brutalist offset shadow */
 .pixel-border {
   position: relative;
   border: 2px solid var(--color-accent-primary);
-  box-shadow:
-    4px 4px 0 0 var(--color-accent-primary),
-    -1px -1px 0 0 var(--color-accent-primary);
-  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0 0 var(--color-accent-primary);
+  transition: all 0.1s ease;
 }
 
 .pixel-border:hover {
   background-color: var(--color-accent-primary);
   color: var(--color-bg-deep);
-  box-shadow:
-    4px 4px 0 0 var(--color-accent-primary),
-    -1px -1px 0 0 var(--color-accent-primary),
-    0 0 20px color-mix(in srgb, var(--color-accent-primary) 40%, transparent);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 var(--color-accent-primary);
 }
 
 .pixel-border:active {
-  transform: translate(2px, 2px);
-  box-shadow:
-    2px 2px 0 0 var(--color-accent-primary),
-    0 0 20px color-mix(in srgb, var(--color-accent-primary) 40%, transparent);
+  transform: translate(4px, 4px);
+  box-shadow: none;
 }
 
 /* Focus ring for accessibility */
@@ -334,19 +293,19 @@ body {
    ============================================ */
 
 html.light {
-  --color-bg-deep: #F5F5F7;
-  --color-bg-surface: #EAEAEF;
+  --color-bg-deep: #F0F0F0;
+  --color-bg-surface: #E4E4E4;
   --color-bg-elevated: #FFFFFF;
 
   --color-accent-primary: #CC1A00;
   --color-accent-primary-muted: #991300;
 
-  --color-accent-secondary: #1A1A2E;
-  --color-accent-secondary-muted: #3A3A4E;
+  --color-accent-secondary: #1A1A1A;
+  --color-accent-secondary-muted: #3A3A3A;
 
-  --color-text-primary: #1A1A2E;
-  --color-text-secondary: #4A4A5A;
-  --color-text-muted: #646478;
+  --color-text-primary: #0C0C0C;
+  --color-text-secondary: #333333;
+  --color-text-muted: #666666;
 
   --color-game-ascending: #005A8A;
   --color-game-neonzone: #C70058;
@@ -356,45 +315,9 @@ html.light {
   --color-steam-blue: #1B6FA8;
 }
 
-/* Scanlines: hide in light mode */
-html.light .scanline-overlay {
-  display: none;
-}
-
-/* Tone down neon glow effects in light mode */
-html.light .neon-text,
-html.light .neon-text-magenta {
-  text-shadow: none;
-}
-
-html.light .neon-text-subtle {
-  text-shadow: none;
-}
-
-html.light .neon-border {
-  box-shadow:
-    0 0 5px color-mix(in srgb, var(--color-accent-primary) 15%, transparent),
-    0 0 10px color-mix(in srgb, var(--color-accent-primary) 8%, transparent);
-}
-
-/* Glitch text: use multiply blend instead of screen on light bg */
-html.light .glitch-text::before,
-html.light .glitch-text::after {
-  mix-blend-mode: multiply;
-}
-
-/* Pixel border: softer shadow in light mode */
+/* Pixel border: adjust shadow in light mode */
 html.light .pixel-border {
-  box-shadow:
-    3px 3px 0 0 var(--color-accent-primary),
-    -1px -1px 0 0 var(--color-accent-primary);
-}
-
-html.light .pixel-border:hover {
-  box-shadow:
-    3px 3px 0 0 var(--color-accent-primary),
-    -1px -1px 0 0 var(--color-accent-primary),
-    0 0 15px color-mix(in srgb, var(--color-accent-primary) 25%, transparent);
+  box-shadow: 4px 4px 0 0 var(--color-accent-primary);
 }
 
 /* Scrollbar: light mode */
@@ -403,22 +326,18 @@ html.light ::-webkit-scrollbar-track {
 }
 
 html.light ::-webkit-scrollbar-thumb {
-  background: #C8C8D0;
+  background: var(--color-accent-primary);
 }
 
-html.light ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent-primary-muted);
-}
-
-/* Logo theme switching (white for dark mode, black for light mode) */
+/* Logo theme switching */
 .nav-logo-light, .otr-logo-light { display: none; }
 .nav-logo-dark, .otr-logo-dark { display: block; }
 html.light .nav-logo-dark, html.light .otr-logo-dark { display: none; }
 html.light .nav-logo-light, html.light .otr-logo-light { display: block; }
 
-/* White/5 borders become dark/8 in light mode */
+/* White/5 borders become dark/10 in light mode */
 html.light [class*="border-white/"] {
-  border-color: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.10);
 }
 
 /* Reduced motion */
@@ -430,9 +349,5 @@ html.light [class*="border-white/"] {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-
-  .scanline-overlay {
-    display: none;
   }
 }

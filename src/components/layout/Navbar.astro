@@ -12,23 +12,20 @@ const navLinks = [
 
 <header
   id="navbar"
-  class="fixed top-0 left-0 right-0 z-40 transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-40 bg-bg-deep border-b-2 border-accent-primary"
 >
   <nav class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between" aria-label="Main navigation">
     <!-- Logo -->
-    <a
-      href="/"
-      class="flex items-center group"
-    >
+    <a href="/" class="flex items-center">
       <img
         src="/images/logo/pixfork-logo-white.svg"
         alt="Pixfork Games"
-        class="h-10 md:h-12 w-auto transition-transform group-hover:scale-105 nav-logo-dark"
+        class="h-10 md:h-12 w-auto nav-logo-dark"
       />
       <img
         src="/images/logo/pixfork-logo-black.svg"
         alt="Pixfork Games"
-        class="h-10 md:h-12 w-auto transition-transform group-hover:scale-105 nav-logo-light hidden"
+        class="h-10 md:h-12 w-auto nav-logo-light hidden"
       />
     </a>
 
@@ -37,7 +34,7 @@ const navLinks = [
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="font-heading text-sm text-text-muted uppercase tracking-wider hover:text-accent-primary transition-colors duration-200 py-2"
+          class="font-heading text-sm text-text-muted uppercase tracking-wider hover:text-accent-primary transition-colors duration-100 py-2"
         >
           {link.label}
         </a>
@@ -50,19 +47,18 @@ const navLinks = [
       <button
         id="theme-toggle"
         type="button"
-        class="w-10 h-10 flex items-center justify-center text-text-muted hover:text-accent-primary transition-colors"
+        class="w-10 h-10 flex items-center justify-center text-text-muted hover:text-accent-primary transition-colors border border-white/10 hover:border-accent-primary"
         aria-label="Toggle light/dark mode"
       >
-        <!-- Sun icon (shown in dark mode) -->
-        <Icon name="lucide:sun" class="w-5 h-5 theme-icon-sun" />
-        <!-- Moon icon (shown in light mode) -->
-        <Icon name="lucide:moon" class="w-5 h-5 theme-icon-moon hidden" />
+        <Icon name="lucide:sun" class="w-4 h-4 theme-icon-sun" />
+        <Icon name="lucide:moon" class="w-4 h-4 theme-icon-moon hidden" />
       </button>
 
       <!-- Steam CTA (desktop only) -->
       <a
         href="/games/on-tape-rewind"
-        class="hidden lg:inline-block px-4 py-2 text-xs font-heading uppercase tracking-wider text-game-ontape border border-game-ontape hover:bg-game-ontape hover:text-bg-deep transition-all"
+        class="hidden lg:inline-block px-4 py-2 text-xs font-heading uppercase tracking-wider text-game-ontape border-2 border-game-ontape hover:bg-game-ontape hover:text-bg-deep transition-all"
+        style="box-shadow: 3px 3px 0 var(--color-game-ontape);"
       >
         On Tape &lt;&lt; Rewind
       </a>
@@ -74,7 +70,6 @@ const navLinks = [
 </header>
 
 <script>
-  // Theme toggle
   const toggle = document.getElementById('theme-toggle');
   const sunIcon = toggle?.querySelector('.theme-icon-sun');
   const moonIcon = toggle?.querySelector('.theme-icon-moon');
@@ -92,27 +87,4 @@ const navLinks = [
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
     updateIcons();
   });
-
-  // Navbar scroll behavior: transparent -> solid
-  const navbar = document.getElementById('navbar');
-  if (navbar) {
-    const updateNavbar = () => {
-      if (window.scrollY > window.innerHeight * 0.3) {
-        const isLight = document.documentElement.classList.contains('light');
-        navbar.style.backgroundColor = isLight
-          ? 'rgba(245, 245, 247, 0.95)'
-          : 'rgba(10, 10, 15, 0.95)';
-        navbar.style.backdropFilter = 'blur(10px)';
-        navbar.style.borderBottom = isLight
-          ? '1px solid rgba(0, 0, 0, 0.08)'
-          : '1px solid rgba(255, 255, 255, 0.05)';
-      } else {
-        navbar.style.backgroundColor = 'transparent';
-        navbar.style.backdropFilter = 'none';
-        navbar.style.borderBottom = '1px solid transparent';
-      }
-    };
-    window.addEventListener('scroll', updateNavbar, { passive: true });
-    updateNavbar();
-  }
 </script>
