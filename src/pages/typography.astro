@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/layout/Navbar.astro';
+
+const fonts = [
+  {
+    id: 'ppmondwest',
+    label: 'PPMondwest',
+    note: 'Current',
+    stack: "'PPMondwest', monospace",
+    google: null,
+  },
+  {
+    id: 'chakra-petch',
+    label: 'Chakra Petch',
+    note: 'Tech / Gaming',
+    stack: "'Chakra Petch', monospace",
+    google: 'Chakra+Petch:wght@400;600;700',
+  },
+  {
+    id: 'syne',
+    label: 'Syne',
+    note: 'Geometric / Studio',
+    stack: "'Syne', sans-serif",
+    google: 'Syne:wght@700;800',
+  },
+  {
+    id: 'bebas-neue',
+    label: 'Bebas Neue',
+    note: 'Condensed / Impact',
+    stack: "'Bebas Neue', sans-serif",
+    google: 'Bebas+Neue',
+  },
+  {
+    id: 'oxanium',
+    label: 'Oxanium',
+    note: 'Futuristic / Soft',
+    stack: "'Oxanium', monospace",
+    google: 'Oxanium:wght@400;600;700;800',
+  },
+  {
+    id: 'big-shoulders',
+    label: 'Big Shoulders',
+    note: 'Tall / Editorial',
+    stack: "'Big Shoulders Display', sans-serif",
+    google: 'Big+Shoulders+Display:wght@700;900',
+  },
+  {
+    id: 'barlow',
+    label: 'Barlow Condensed',
+    note: 'Clean / Technical',
+    stack: "'Barlow Condensed', sans-serif",
+    google: 'Barlow+Condensed:wght@500;600;700',
+  },
+];
+
+const googleFontsQuery = fonts
+  .filter((f) => f.google)
+  .map((f) => `family=${f.google}`)
+  .join('&');
+---
+
+<BaseLayout title="Typography Test — Pixfork Games">
+  <!-- Preload all suggestion fonts -->
+  <link
+    rel="stylesheet"
+    href={`https://fonts.googleapis.com/css2?${googleFontsQuery}&display=swap`}
+    slot="head"
+  />
+
+  <Navbar />
+
+  <main id="main-content" class="pt-24 pb-24">
+    <!-- Sticky font switcher -->
+    <div class="sticky top-16 z-40 bg-bg-deep/95 backdrop-blur border-b border-white/5 px-6 py-3">
+      <div class="max-w-6xl mx-auto flex items-center gap-3 flex-wrap">
+        <span class="font-mono text-xs text-text-muted uppercase tracking-widest shrink-0 mr-1">Heading font:</span>
+        {fonts.map((font) => (
+          <button
+            data-font-id={font.id}
+            data-font-stack={font.stack}
+            class="font-switcher-btn px-3 py-1.5 text-xs border border-white/10 rounded-sm text-text-muted hover:border-accent-primary/50 hover:text-text-primary transition-all"
+            class:list={[{ 'border-accent-primary text-accent-primary': font.id === 'ppmondwest' }]}
+          >
+            {font.label}
+            <span class="ml-1 text-text-muted opacity-60">{font.note}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div id="preview-root" class="max-w-4xl mx-auto px-6 md:px-12 pt-16 space-y-20">
+
+      <!-- Scale -->
+      <section>
+        <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-8">Type scale — heading</p>
+        <div class="space-y-4">
+          <div class="preview-text font-heading text-5xl uppercase tracking-wider text-text-primary">Pixfork Games</div>
+          <div class="preview-text font-heading text-4xl uppercase tracking-wider text-text-primary">On Tape &lt;&lt; Rewind</div>
+          <div class="preview-text font-heading text-3xl uppercase tracking-wider text-text-primary">Psychological Horror</div>
+          <div class="preview-text font-heading text-2xl uppercase tracking-wider text-text-primary">Nesoddtangen, Norway</div>
+          <div class="preview-text font-heading text-xl uppercase tracking-wider text-text-primary">Est. 2022</div>
+          <div class="preview-text font-heading text-lg uppercase tracking-wider text-text-primary">Coming 2027</div>
+          <div class="preview-text font-heading text-base uppercase tracking-wider text-text-primary">Explore Our Games</div>
+          <div class="preview-text font-heading text-sm uppercase tracking-wider text-text-primary">Section Label</div>
+          <div class="preview-text font-heading text-xs uppercase tracking-wider text-text-muted">Badge / Tag</div>
+        </div>
+      </section>
+
+      <!-- Real page headings -->
+      <section>
+        <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-8">Real headings in context</p>
+        <div class="space-y-10">
+          <div>
+            <p class="font-mono text-[10px] text-text-muted mb-2">— Hero h1</p>
+            <h1 class="preview-text font-heading text-4xl md:text-5xl text-text-primary uppercase tracking-wider neon-text">
+              Pixfork Games
+            </h1>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] text-text-muted mb-2">— Game page h1</p>
+            <h2 class="preview-text font-heading text-3xl md:text-4xl uppercase tracking-wider" style="color: #4ECDC4">
+              On Tape &lt;&lt; Rewind
+            </h2>
+          </div>
+          <div>
+            <p class="font-mono text-[10px] text-text-muted mb-2">— Section heading</p>
+            <div class="flex items-center gap-4">
+              <div class="w-8 h-px bg-accent-primary/40"></div>
+              <h3 class="preview-text font-heading text-lg text-text-primary uppercase tracking-widest">Our Games</h3>
+              <div class="flex-1 h-px bg-white/5"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA buttons -->
+      <section>
+        <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-8">Buttons & CTAs</p>
+        <div class="flex flex-wrap gap-4">
+          <button class="preview-text pixel-border px-8 py-4 font-heading text-sm text-accent-primary uppercase tracking-wider">
+            Explore Our Games
+          </button>
+          <button class="preview-text px-6 py-3 border-2 border-game-ontape text-game-ontape font-heading text-sm uppercase tracking-wider">
+            Wishlist on Steam
+          </button>
+          <button class="preview-text px-6 py-3 border border-white/10 text-text-muted font-heading text-sm uppercase tracking-wider">
+            Learn More
+          </button>
+        </div>
+      </section>
+
+      <!-- Game card labels -->
+      <section>
+        <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-8">Game cards</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {[
+            { title: 'On Tape << Rewind', tagline: 'A psychological horror mystery set in arctic Norway.', color: '#4ECDC4', label: 'Coming 2027' },
+            { title: 'Ascending', tagline: 'Procedural climbing in a world of falling towers.', color: '#0077B6', label: 'iOS / Android' },
+            { title: 'Neon Zone', tagline: 'A fast-paced neon arcade shooter.', color: '#FF006E', label: 'iOS / Android' },
+          ].map((game) => (
+            <div class="bg-bg-surface border border-white/5 rounded-sm px-5 py-4" style={`color: ${game.color}`}>
+              <div class="preview-text font-heading text-xs uppercase tracking-wider mb-2">{game.title}</div>
+              <p class="text-text-muted text-xs leading-relaxed mb-3">{game.tagline}</p>
+              <span class="preview-text font-mono text-xs uppercase tracking-wider opacity-70">{game.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Navbar label -->
+      <section>
+        <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-8">Nav items</p>
+        <div class="flex gap-8 items-center">
+          {['Games', 'About', 'Press', 'Contact'].map((item) => (
+            <span class="preview-text font-heading text-sm text-text-secondary uppercase tracking-wider hover:text-text-primary transition-colors cursor-default">
+              {item}
+            </span>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </main>
+</BaseLayout>
+
+<script define:vars={{ fonts }}>
+  const root = document.getElementById('preview-root');
+  const buttons = document.querySelectorAll('.font-switcher-btn');
+  let active = 'ppmondwest';
+
+  function applyFont(fontId, fontStack) {
+    active = fontId;
+    // Override heading font via CSS variable on the preview container
+    document.querySelectorAll('.preview-text').forEach((el) => {
+      el.style.fontFamily = fontStack;
+    });
+    // Update button states
+    buttons.forEach((btn) => {
+      const isActive = btn.dataset.fontId === fontId;
+      btn.classList.toggle('border-accent-primary', isActive);
+      btn.classList.toggle('text-accent-primary', isActive);
+      btn.classList.toggle('border-white/10', !isActive);
+      btn.classList.toggle('text-text-muted', !isActive);
+    });
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      applyFont(btn.dataset.fontId, btn.dataset.fontStack);
+    });
+  });
+</script>
