@@ -26,3 +26,6 @@ pnpm-debug.log*
 
 # raw studio assets (not for version control)
 Pixfork content/
+
+# raw font packs (fonts are committed to public/fonts/ instead)
+Bitmap Font Pack - Free for Personal Use/

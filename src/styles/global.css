@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'PPNeueBit';
+  src: url('/fonts/PPNeueBit-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPMondwest';
+  src: url('/fonts/PPMondwest-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ============================================
    PIXFORK GAMES — DESIGN SYSTEM
    ============================================ */
@@ -37,9 +53,9 @@
   --color-success: #00FF88;
 
   /* Font families */
-  --font-heading: 'Press Start 2P', monospace;
+  --font-heading: 'PPNeueBit', 'Press Start 2P', monospace;
   --font-body: 'Space Grotesk', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'PPMondwest', 'JetBrains Mono', monospace;
 
   /* Animations */
   --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
