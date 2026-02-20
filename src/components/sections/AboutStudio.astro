@@ -41,29 +41,29 @@ import SectionHeading from '../ui/SectionHeading.astro';
           <div class="group relative bg-bg-surface border border-white/5 rounded-sm p-4 hover:border-accent-primary/30 transition-all duration-300 overflow-hidden">
             <!-- Avatar placeholder -->
             <div class="w-16 h-16 rounded-sm bg-bg-elevated mb-3 flex items-center justify-center overflow-hidden">
-              <span class="font-heading text-lg text-text-muted">
+              <span class="font-heading text-xl text-text-muted">
                 {member.name.split(' ').map(n => n[0]).join('')}
               </span>
             </div>
 
             <!-- Info -->
-            <h3 class="font-heading text-[10px] text-text-primary uppercase tracking-wider mb-1">
+            <h3 class="font-heading text-sm text-text-primary uppercase tracking-wider mb-1">
               {member.name.split(' ')[0]}
             </h3>
             <p class="text-text-muted text-xs">{member.role}</p>
 
             <!-- Hover: RPG stats -->
             <div class="absolute inset-0 bg-bg-surface/95 p-4 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <p class="font-heading text-[8px] text-accent-primary uppercase tracking-widest mb-3">
+              <p class="font-heading text-xs text-accent-primary uppercase tracking-widest mb-3">
                 Stats
               </p>
               {member.funStats.map((stat) => (
                 <div class="mb-2">
                   <div class="flex justify-between mb-0.5">
-                    <span class="text-[9px] text-text-muted font-mono uppercase">
+                    <span class="text-xs text-text-muted font-mono uppercase">
                       {stat.label}
                     </span>
-                    <span class="text-[9px] text-accent-primary font-mono">
+                    <span class="text-xs text-accent-primary font-mono">
                       {stat.value}%
                     </span>
                   </div>

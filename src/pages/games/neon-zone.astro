@@ -51,7 +51,7 @@ const iconMap: Record<string, string> = {
               </div>
 
               <h1
-                class="font-heading text-xl md:text-3xl uppercase tracking-wider leading-relaxed mb-6"
+                class="font-heading text-2xl md:text-4xl uppercase tracking-wider leading-relaxed mb-6"
                 style="color: var(--color-game-neonzone); text-shadow: 0 0 10px #FF006E66, 0 0 20px #FF006E33;"
               >
                 Neon Zone
@@ -76,7 +76,7 @@ const iconMap: Record<string, string> = {
                   href={game.storeLinks.appStore}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 px-6 py-3 bg-bg-surface border-2 border-game-neonzone text-game-neonzone font-heading text-[10px] uppercase tracking-wider hover:bg-game-neonzone hover:text-bg-deep transition-all shadow-[0_0_10px_#FF006E33] hover:shadow-[0_0_20px_#FF006E66]"
+                  class="inline-flex items-center gap-2 px-6 py-3 bg-bg-surface border-2 border-game-neonzone text-game-neonzone font-heading text-sm uppercase tracking-wider hover:bg-game-neonzone hover:text-bg-deep transition-all shadow-[0_0_10px_#FF006E33] hover:shadow-[0_0_20px_#FF006E66]"
                 >
                   <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                   App Store
@@ -87,7 +87,7 @@ const iconMap: Record<string, string> = {
                   href={game.storeLinks.googlePlay}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 px-6 py-3 bg-bg-surface border-2 border-game-neonzone/60 text-game-neonzone/80 font-heading text-[10px] uppercase tracking-wider hover:border-game-neonzone hover:text-game-neonzone hover:bg-game-neonzone/10 transition-all"
+                  class="inline-flex items-center gap-2 px-6 py-3 bg-bg-surface border-2 border-game-neonzone/60 text-game-neonzone/80 font-heading text-sm uppercase tracking-wider hover:border-game-neonzone hover:text-game-neonzone hover:bg-game-neonzone/10 transition-all"
                 >
                   <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.609 22.186a.996.996 0 0 1-.609-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302-2.698-2.302 2.698-2.302zM5.864 2.658L16.801 8.99l-2.302 2.302-8.635-8.634z"/></svg>
                   Google Play
@@ -114,7 +114,7 @@ const iconMap: Record<string, string> = {
     {game.features && (
       <section class="py-24 md:py-32">
         <div class="max-w-5xl mx-auto px-6 md:px-12">
-          <h2 class="font-heading text-base text-text-primary uppercase tracking-wider text-center mb-16" style="text-shadow: 0 0 8px #FF006E44;">
+          <h2 class="font-heading text-lg text-text-primary uppercase tracking-wider text-center mb-16" style="text-shadow: 0 0 8px #FF006E44;">
             Features
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -123,7 +123,7 @@ const iconMap: Record<string, string> = {
                 <div class="w-12 h-12 mx-auto bg-bg-elevated rounded-sm flex items-center justify-center mb-4">
                   <Icon name={iconMap[feature.icon] || 'lucide:circle'} class="w-6 h-6 text-game-neonzone" />
                 </div>
-                <h3 class="font-heading text-[10px] text-text-primary uppercase tracking-wider mb-3">{feature.title}</h3>
+                <h3 class="font-heading text-sm text-text-primary uppercase tracking-wider mb-3">{feature.title}</h3>
                 <p class="text-text-secondary text-sm leading-relaxed">{feature.description}</p>
               </div>
             ))}
@@ -135,7 +135,7 @@ const iconMap: Record<string, string> = {
     <!-- Videos -->
     <section class="py-24 md:py-32 bg-bg-surface/50">
       <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <h2 class="font-heading text-base text-text-primary uppercase tracking-wider text-center mb-16" style="text-shadow: 0 0 8px #FF006E44;">
+        <h2 class="font-heading text-lg text-text-primary uppercase tracking-wider text-center mb-16" style="text-shadow: 0 0 8px #FF006E44;">
           Videos
         </h2>
 
@@ -154,7 +154,7 @@ const iconMap: Record<string, string> = {
                 loading="lazy"
               ></iframe>
             </div>
-            <p class="font-heading text-[10px] text-game-neonzone/60 uppercase tracking-wider mt-3">
+            <p class="font-heading text-sm text-game-neonzone/60 uppercase tracking-wider mt-3">
               Commentary Track
             </p>
           </div>
@@ -173,7 +173,7 @@ const iconMap: Record<string, string> = {
                 loading="lazy"
               ></iframe>
             </div>
-            <p class="font-heading text-[10px] text-game-neonzone/60 uppercase tracking-wider mt-3">
+            <p class="font-heading text-sm text-game-neonzone/60 uppercase tracking-wider mt-3">
               Zoundtrack 01 — Maze Mazter
             </p>
           </div>

@@ -110,12 +110,12 @@ export default function BootSequence() {
             <div className="w-1.5 h-1.5 bg-[#E21D00]" />
             <div className="w-1.5 h-1.5 bg-[#E21D00]" />
           </div>
-          <span className="font-mono text-[10px] text-[#E21D00]/40 uppercase tracking-widest">
+          <span className="font-mono text-xs text-[#E21D00]/40 uppercase tracking-widest">
             Pixfork Games OS
           </span>
         </div>
 
-        <div className="font-mono text-sm md:text-base space-y-1">
+        <div className="font-mono text-base md:text-lg space-y-1">
           {lines.map((line, i) => (
             <div
               key={i}
@@ -143,7 +143,7 @@ export default function BootSequence() {
           />
         </div>
 
-        <p className="text-text-muted text-xs mt-6 font-mono">
+        <p className="text-text-muted text-sm mt-6 font-mono">
           Press any key to skip
         </p>
       </div>

@@ -71,7 +71,7 @@ export default function MobileMenu() {
               <a
                 key={link.href}
                 href={link.href}
-                className="font-heading text-sm text-text-primary uppercase tracking-wider hover:text-accent-primary transition-colors"
+                className="font-heading text-base text-text-primary uppercase tracking-wider hover:text-accent-primary transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
@@ -80,7 +80,7 @@ export default function MobileMenu() {
 
             {/* Theme toggle */}
             <button
-              className="mt-4 font-heading text-[10px] text-text-muted uppercase tracking-wider hover:text-accent-primary transition-colors flex items-center gap-2 py-2 px-4"
+              className="mt-4 font-heading text-sm text-text-muted uppercase tracking-wider hover:text-accent-primary transition-colors flex items-center gap-2 py-2 px-4"
               onClick={() => {
                 const next = !isLight;
                 document.documentElement.classList.toggle('light', next);

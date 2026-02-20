@@ -25,7 +25,7 @@ import { contactEmail, companyAddress } from '../data/socials';
 
         <!-- Fact Sheet -->
         <div class="bg-bg-surface border border-white/5 rounded-sm p-8 md:p-12 mb-16">
-          <h2 class="font-heading text-xs text-text-primary uppercase tracking-wider mb-8">
+          <h2 class="font-heading text-sm text-text-primary uppercase tracking-wider mb-8">
             Fact Sheet
           </h2>
           <dl class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -66,12 +66,12 @@ import { contactEmail, companyAddress } from '../data/socials';
 
         <!-- Logo downloads -->
         <div class="mb-16">
-          <h2 class="font-heading text-xs text-text-primary uppercase tracking-wider mb-8">
+          <h2 class="font-heading text-sm text-text-primary uppercase tracking-wider mb-8">
             Logo &amp; Branding
           </h2>
 
           <!-- Horizontal -->
-          <h3 class="font-mono text-[10px] text-text-muted uppercase tracking-wider mb-4">Horizontal</h3>
+          <h3 class="font-mono text-xs text-text-muted uppercase tracking-wider mb-4">Horizontal</h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
             <div class="bg-bg-surface border border-white/5 rounded-sm p-6 text-center">
               <div class="h-16 flex items-center justify-center mb-4 bg-bg-deep rounded-sm p-3">
@@ -100,7 +100,7 @@ import { contactEmail, companyAddress } from '../data/socials';
           </div>
 
           <!-- Vertical -->
-          <h3 class="font-mono text-[10px] text-text-muted uppercase tracking-wider mb-4">Vertical</h3>
+          <h3 class="font-mono text-xs text-text-muted uppercase tracking-wider mb-4">Vertical</h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
             <div class="bg-bg-surface border border-white/5 rounded-sm p-6 text-center">
               <div class="h-24 flex items-center justify-center mb-4 bg-bg-deep rounded-sm p-3">
@@ -129,7 +129,7 @@ import { contactEmail, companyAddress } from '../data/socials';
           </div>
 
           <!-- Symbol -->
-          <h3 class="font-mono text-[10px] text-text-muted uppercase tracking-wider mb-4">Symbol</h3>
+          <h3 class="font-mono text-xs text-text-muted uppercase tracking-wider mb-4">Symbol</h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
             <div class="bg-bg-surface border border-white/5 rounded-sm p-6 text-center">
               <div class="h-20 flex items-center justify-center mb-4 bg-bg-deep rounded-sm p-3">
@@ -166,7 +166,7 @@ import { contactEmail, companyAddress } from '../data/socials';
 
         <!-- Games -->
         <div>
-          <h2 class="font-heading text-xs text-text-primary uppercase tracking-wider mb-8">
+          <h2 class="font-heading text-sm text-text-primary uppercase tracking-wider mb-8">
             Our Games
           </h2>
           <div class="space-y-6">
@@ -175,12 +175,12 @@ import { contactEmail, companyAddress } from '../data/socials';
                 <div class="flex flex-col md:flex-row md:items-start gap-6">
                   <div class="flex-1">
                     <div class="flex items-center gap-3 mb-3">
-                      <h3 class="font-heading text-[11px] text-text-primary uppercase tracking-wider">
+                      <h3 class="font-heading text-sm text-text-primary uppercase tracking-wider">
                         {game.title}
                       </h3>
                       {game.status === 'coming-soon' && (
                         <span
-                          class="px-2 py-0.5 text-[8px] font-heading uppercase tracking-widest border"
+                          class="px-2 py-0.5 text-xs font-heading uppercase tracking-widest border"
                           style={`border-color: ${game.accentColor}; color: ${game.accentColor};`}
                         >
                           {game.releaseYear}
@@ -190,13 +190,13 @@ import { contactEmail, companyAddress } from '../data/socials';
                     <p class="text-text-secondary text-sm leading-relaxed mb-3">{game.description}</p>
                     <div class="flex flex-wrap gap-2">
                       {game.genre.map((g) => (
-                        <span class="text-[10px] text-text-muted font-mono">{g}</span>
+                        <span class="text-xs text-text-muted font-mono">{g}</span>
                       ))}
                     </div>
                   </div>
                   <a
                     href={`/games/${game.slug}`}
-                    class="text-xs font-heading uppercase tracking-wider transition-colors whitespace-nowrap"
+                    class="text-sm font-heading uppercase tracking-wider transition-colors whitespace-nowrap"
                     style={`color: ${game.accentColor};`}
                   >
                     View Page &rarr;

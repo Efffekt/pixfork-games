@@ -17,7 +17,7 @@ import { contactEmail, companyAddress } from '../data/socials';
     <!-- Hero -->
     <section class="py-16 md:py-24">
       <div class="max-w-4xl mx-auto px-6 md:px-12 text-center">
-        <h1 class="font-heading text-xl md:text-2xl text-text-primary uppercase tracking-wider neon-text-subtle mb-8">
+        <h1 class="font-heading text-2xl md:text-3xl text-text-primary uppercase tracking-wider neon-text-subtle mb-8">
           About Pixfork Games
         </h1>
         <p class="text-text-secondary text-xl leading-relaxed mb-6">
@@ -40,8 +40,8 @@ import { contactEmail, companyAddress } from '../data/socials';
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="bg-bg-surface border border-white/5 rounded-sm p-8">
-            <span class="font-heading text-xs text-accent-primary mb-4 block">2022</span>
-            <h3 class="font-heading text-[10px] text-text-primary uppercase tracking-wider mb-3">
+            <span class="font-heading text-sm text-accent-primary mb-4 block">2022</span>
+            <h3 class="font-heading text-sm text-text-primary uppercase tracking-wider mb-3">
               The Beginning
             </h3>
             <p class="text-text-secondary text-sm leading-relaxed">
@@ -52,8 +52,8 @@ import { contactEmail, companyAddress } from '../data/socials';
           </div>
 
           <div class="bg-bg-surface border border-white/5 rounded-sm p-8">
-            <span class="font-heading text-xs text-game-ascending mb-4 block">2023–2024</span>
-            <h3 class="font-heading text-[10px] text-text-primary uppercase tracking-wider mb-3">
+            <span class="font-heading text-sm text-game-ascending mb-4 block">2023–2024</span>
+            <h3 class="font-heading text-sm text-text-primary uppercase tracking-wider mb-3">
               Mobile Launch
             </h3>
             <p class="text-text-secondary text-sm leading-relaxed">
@@ -63,8 +63,8 @@ import { contactEmail, companyAddress } from '../data/socials';
           </div>
 
           <div class="bg-bg-surface border border-white/5 rounded-sm p-8">
-            <span class="font-heading text-xs text-game-ontape mb-4 block">2025–2027</span>
-            <h3 class="font-heading text-[10px] text-text-primary uppercase tracking-wider mb-3">
+            <span class="font-heading text-sm text-game-ontape mb-4 block">2025–2027</span>
+            <h3 class="font-heading text-sm text-text-primary uppercase tracking-wider mb-3">
               The Big Leap
             </h3>
             <p class="text-text-secondary text-sm leading-relaxed">
@@ -91,13 +91,13 @@ import { contactEmail, companyAddress } from '../data/socials';
               <div class="flex items-start gap-6">
                 <!-- Avatar -->
                 <div class="w-20 h-20 flex-shrink-0 rounded-sm bg-bg-elevated flex items-center justify-center">
-                  <span class="font-heading text-xl text-text-muted">
+                  <span class="font-heading text-2xl text-text-muted">
                     {member.name.split(' ').map(n => n[0]).join('')}
                   </span>
                 </div>
 
                 <div class="flex-1">
-                  <h3 class="font-heading text-[11px] text-text-primary uppercase tracking-wider mb-1">
+                  <h3 class="font-heading text-sm text-text-primary uppercase tracking-wider mb-1">
                     {member.name}
                   </h3>
                   <p class="text-accent-primary-muted text-sm mb-4">{member.role}</p>
@@ -107,8 +107,8 @@ import { contactEmail, companyAddress } from '../data/socials';
                     {member.funStats.slice(0, 3).map((stat) => (
                       <div>
                         <div class="flex justify-between mb-0.5">
-                          <span class="text-[9px] text-text-muted font-mono uppercase">{stat.label}</span>
-                          <span class="text-[9px] text-accent-primary font-mono">{stat.value}%</span>
+                          <span class="text-xs text-text-muted font-mono uppercase">{stat.label}</span>
+                          <span class="text-xs text-accent-primary font-mono">{stat.value}%</span>
                         </div>
                         <div class="h-1 bg-bg-elevated rounded-sm overflow-hidden">
                           <div class="h-full bg-accent-primary/60 rounded-sm transition-all duration-500" style={`width: ${stat.value}%;`} />
@@ -127,7 +127,7 @@ import { contactEmail, companyAddress } from '../data/socials';
     <!-- Contact CTA -->
     <section class="py-16 md:py-24 text-center bg-bg-surface/30">
       <div class="max-w-2xl mx-auto px-6">
-        <h2 class="font-heading text-base text-text-primary uppercase tracking-wider mb-4 neon-text-subtle">
+        <h2 class="font-heading text-lg text-text-primary uppercase tracking-wider mb-4 neon-text-subtle">
           Get in Touch
         </h2>
         <p class="text-text-secondary mb-2">{companyAddress}</p>
