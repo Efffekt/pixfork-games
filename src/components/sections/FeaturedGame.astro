@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import VHSEffect from '../effects/VHSEffect.tsx';
 import Badge from '../ui/Badge.astro';
 import SteamButton from '../ui/SteamButton.astro';
@@ -46,7 +47,7 @@ import SteamButton from '../ui/SteamButton.astro';
           <span class="font-heading text-[10px] text-game-ontape uppercase tracking-widest">
             Coming 2027
           </span>
-          <span class="inline-block w-2 h-4 bg-game-ontape animate-[blink-cursor_1s_step-end_infinite]"></span>
+          <span class="inline-block w-2 h-4 bg-game-ontape animate-[blink-cursor_1s_step-end_infinite]" aria-hidden="true"></span>
         </div>
 
         <!-- Title (hand-drawn logo) -->
@@ -83,11 +84,7 @@ import SteamButton from '../ui/SteamButton.astro';
 
         <!-- Platforms -->
         <div class="flex items-center gap-2 text-text-muted text-sm">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-            <line x1="8" y1="21" x2="16" y2="21" />
-            <line x1="12" y1="17" x2="12" y2="21" />
-          </svg>
+          <Icon name="lucide:monitor" class="w-4 h-4" aria-hidden="true" />
           <span>PC / Console</span>
         </div>
 
@@ -99,10 +96,7 @@ import SteamButton from '../ui/SteamButton.astro';
             class="inline-flex items-center gap-2 px-6 py-3 border-2 border-text-muted text-text-secondary font-heading text-[10px] uppercase tracking-wider hover:border-game-ontape hover:text-game-ontape transition-all"
           >
             Learn More
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
+            <Icon name="lucide:arrow-right" class="w-4 h-4" aria-hidden="true" />
           </a>
         </div>
       </div>

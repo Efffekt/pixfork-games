@@ -24,7 +24,7 @@
   /* Text */
   --color-text-primary: #F0F0F0;
   --color-text-secondary: #A0A0B0;
-  --color-text-muted: #5A5A6E;
+  --color-text-muted: #8585A0;
 
   /* Game-specific */
   --color-game-ascending: #0077B6;
@@ -338,7 +338,11 @@ html.light {
 
   --color-text-primary: #1A1A2E;
   --color-text-secondary: #4A4A5A;
-  --color-text-muted: #8A8A9A;
+  --color-text-muted: #646478;
+
+  --color-game-ascending: #005A8A;
+  --color-game-neonzone: #C70058;
+  --color-game-ontape: #0D6B63;
 
   --color-steam-dark: #E8ECF0;
   --color-steam-blue: #1B6FA8;

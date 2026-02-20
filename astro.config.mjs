@@ -4,13 +4,14 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
+import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://pixfork.com',
   output: 'static',
   adapter: vercel(),
-  integrations: [react(), sitemap()],
+  integrations: [react(), sitemap(), icon()],
   vite: {
     plugins: [tailwindcss()],
   },

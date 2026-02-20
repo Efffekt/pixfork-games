@@ -29,11 +29,13 @@ export default function BootSequence() {
     complete();
   }, [complete]);
 
-  // Check if already booted this session
+  // Check if already booted this session or prefers reduced motion
   useEffect(() => {
-    if (sessionStorage.getItem('pixfork-booted')) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (sessionStorage.getItem('pixfork-booted') || prefersReducedMotion) {
       skipRef.current = true;
       setPhase('complete');
+      sessionStorage.setItem('pixfork-booted', 'true');
       window.dispatchEvent(new CustomEvent('boot-complete'));
       return;
     }

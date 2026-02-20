@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { team } from '../../data/team';
 import SectionHeading from '../ui/SectionHeading.astro';
 ---
@@ -29,10 +30,7 @@ import SectionHeading from '../ui/SectionHeading.astro';
           &mdash; we create experiences that stick with you.
         </p>
         <div class="flex items-center gap-3 pt-4">
-          <svg class="w-5 h-5 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-            <circle cx="12" cy="10" r="3" />
-          </svg>
+          <Icon name="lucide:map-pin" class="w-5 h-5 text-text-muted" aria-hidden="true" />
           <span class="text-text-muted text-sm font-mono">Nesoddtangen, Norway</span>
         </div>
       </div>

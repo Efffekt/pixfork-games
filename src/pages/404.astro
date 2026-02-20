@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Game Over — Page Not Found — Pixfork Games">
-  <main class="min-h-screen flex items-center justify-center px-6">
+  <main id="main-content" class="min-h-screen flex items-center justify-center px-6">
     <div class="text-center max-w-lg">
       <!-- Game Over text -->
       <div class="mb-8">
@@ -53,6 +53,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p id="countdown" class="font-heading text-2xl text-accent-primary neon-text">
           10
         </p>
+        <button
+          id="pause-countdown"
+          type="button"
+          class="mt-2 font-mono text-xs text-text-muted hover:text-accent-primary transition-colors py-1 px-3"
+          aria-label="Pause countdown"
+        >
+          [ pause ]
+        </button>
       </div>
 
       <!-- Actions -->
@@ -74,11 +82,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </main>
 
   <script>
-    // Countdown timer that redirects home
     const el = document.getElementById('countdown');
+    const pauseBtn = document.getElementById('pause-countdown');
     const baseUrl = document.querySelector('link[rel="canonical"]')?.getAttribute('href')?.replace(/\/404\/?$/, '/') || '/';
     let count = 10;
+    let paused = false;
+
     const interval = setInterval(() => {
+      if (paused) return;
       count -= 1;
       if (el) el.textContent = String(count);
       if (count <= 0) {
@@ -86,5 +97,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         window.location.href = baseUrl;
       }
     }, 1000);
+
+    pauseBtn?.addEventListener('click', () => {
+      paused = !paused;
+      if (pauseBtn) {
+        pauseBtn.textContent = paused ? '[ resume ]' : '[ pause ]';
+        pauseBtn.setAttribute('aria-label', paused ? 'Resume countdown' : 'Pause countdown');
+      }
+    });
   </script>
 </BaseLayout>

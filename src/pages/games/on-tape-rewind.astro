@@ -5,9 +5,16 @@ import Footer from '../../components/layout/Footer.astro';
 import VHSEffect from '../../components/effects/VHSEffect.tsx';
 import Badge from '../../components/ui/Badge.astro';
 import SteamButton from '../../components/ui/SteamButton.astro';
+import { Icon } from 'astro-icon/components';
 import { games } from '../../data/games';
 
 const game = games.find((g) => g.slug === 'on-tape-rewind')!;
+const iconMap: Record<string, string> = {
+  Disc3: 'lucide:disc-3',
+  Search: 'lucide:search',
+  AudioLines: 'lucide:audio-lines',
+  Eye: 'lucide:eye',
+};
 ---
 
 <BaseLayout
@@ -16,7 +23,7 @@ const game = games.find((g) => g.slug === 'on-tape-rewind')!;
 >
   <Navbar />
 
-  <main>
+  <main id="main-content">
     <!-- Cinematic Hero -->
     <section class="relative min-h-screen flex items-center overflow-hidden">
       <VHSEffect client:visible intensity="medium" />
@@ -113,12 +120,7 @@ const game = games.find((g) => g.slug === 'on-tape-rewind')!;
             {game.features.map((feature) => (
               <div class="group bg-bg-surface border border-white/5 rounded-sm p-8 hover:border-game-ontape/30 transition-all duration-300">
                 <div class="w-12 h-12 bg-bg-elevated rounded-sm flex items-center justify-center mb-4 group-hover:shadow-[0_0_15px_var(--color-game-ontape)33] transition-shadow">
-                  <svg class="w-6 h-6 text-game-ontape" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    {feature.icon === 'Disc3' && <><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></>}
-                    {feature.icon === 'Search' && <><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></>}
-                    {feature.icon === 'AudioLines' && <><path d="M2 10v3"/><path d="M6 6v11"/><path d="M10 3v18"/><path d="M14 8v7"/><path d="M18 5v13"/><path d="M22 10v3"/></>}
-                    {feature.icon === 'Eye' && <><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></>}
-                  </svg>
+                  <Icon name={iconMap[feature.icon] || 'lucide:circle'} class="w-6 h-6 text-game-ontape" />
                 </div>
                 <h3 class="font-heading text-[11px] text-text-primary uppercase tracking-wider mb-3">
                   {feature.title}

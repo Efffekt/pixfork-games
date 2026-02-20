@@ -4,9 +4,15 @@ import Navbar from '../../components/layout/Navbar.astro';
 import Footer from '../../components/layout/Footer.astro';
 import PixelParticles from '../../components/effects/PixelParticles.tsx';
 import Badge from '../../components/ui/Badge.astro';
+import { Icon } from 'astro-icon/components';
 import { games } from '../../data/games';
 
 const game = games.find((g) => g.slug === 'neon-zone')!;
+const iconMap: Record<string, string> = {
+  Zap: 'lucide:zap',
+  Gamepad2: 'lucide:gamepad-2',
+  Trophy: 'lucide:trophy',
+};
 ---
 
 <BaseLayout
@@ -15,7 +21,7 @@ const game = games.find((g) => g.slug === 'neon-zone')!;
 >
   <Navbar />
 
-  <main>
+  <main id="main-content">
     <!-- Neon Hero -->
     <section class="relative min-h-screen flex items-center overflow-hidden">
       <!-- Synthwave grid background -->
@@ -115,11 +121,7 @@ const game = games.find((g) => g.slug === 'neon-zone')!;
             {game.features.map((feature) => (
               <div class="text-center bg-bg-surface border border-white/5 rounded-sm p-8 hover:border-game-neonzone/30 transition-all">
                 <div class="w-12 h-12 mx-auto bg-bg-elevated rounded-sm flex items-center justify-center mb-4">
-                  <svg class="w-6 h-6 text-game-neonzone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    {feature.icon === 'Zap' && <><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></>}
-                    {feature.icon === 'Gamepad2' && <><line x1="6" y1="11" x2="10" y2="11"/><line x1="8" y1="9" x2="8" y2="13"/><line x1="15" y1="12" x2="15.01" y2="12"/><line x1="18" y1="10" x2="18.01" y2="10"/><path d="M17.32 5H6.68a4 4 0 00-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 003 3c1.652 0 2.536-.67 3.286-1.322.44-.384.898-.478 1.344-.478h4.74c.446 0 .904.094 1.344.478C16.464 18.33 17.348 19 19 19a3 3 0 003-3c0-1.544-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0017.32 5z"/></>}
-                    {feature.icon === 'Trophy' && <><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></>}
-                  </svg>
+                  <Icon name={iconMap[feature.icon] || 'lucide:circle'} class="w-6 h-6 text-game-neonzone" />
                 </div>
                 <h3 class="font-heading text-[10px] text-text-primary uppercase tracking-wider mb-3">{feature.title}</h3>
                 <p class="text-text-secondary text-sm leading-relaxed">{feature.description}</p>

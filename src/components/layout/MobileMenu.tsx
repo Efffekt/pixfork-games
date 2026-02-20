@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Sun, Moon } from 'lucide-react';
 
 const navLinks = [
   { label: 'Games', href: '/#games' },
@@ -33,7 +34,7 @@ export default function MobileMenu() {
     <>
       {/* Hamburger button */}
       <button
-        className="md:hidden relative z-50 w-8 h-8 flex flex-col justify-center items-center gap-1.5"
+        className="md:hidden relative z-50 w-10 h-10 flex flex-col justify-center items-center gap-1.5"
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
         aria-expanded={isOpen}
@@ -63,6 +64,7 @@ export default function MobileMenu() {
         >
           <nav
             className="flex flex-col items-center justify-center h-full gap-6"
+            aria-label="Mobile navigation"
             onClick={(e) => e.stopPropagation()}
           >
             {navLinks.map((link) => (
@@ -78,7 +80,7 @@ export default function MobileMenu() {
 
             {/* Theme toggle */}
             <button
-              className="mt-4 font-heading text-[10px] text-text-muted uppercase tracking-wider hover:text-accent-primary transition-colors flex items-center gap-2"
+              className="mt-4 font-heading text-[10px] text-text-muted uppercase tracking-wider hover:text-accent-primary transition-colors flex items-center gap-2 py-2 px-4"
               onClick={() => {
                 const next = !isLight;
                 document.documentElement.classList.toggle('light', next);
@@ -92,21 +94,9 @@ export default function MobileMenu() {
               }}
             >
               {isLight ? (
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                </svg>
+                <Moon className="w-4 h-4" aria-hidden="true" />
               ) : (
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="5"/>
-                  <line x1="12" y1="1" x2="12" y2="3"/>
-                  <line x1="12" y1="21" x2="12" y2="23"/>
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                  <line x1="1" y1="12" x2="3" y2="12"/>
-                  <line x1="21" y1="12" x2="23" y2="12"/>
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                </svg>
+                <Sun className="w-4 h-4" aria-hidden="true" />
               )}
               {isLight ? 'Dark Mode' : 'Light Mode'}
             </button>
